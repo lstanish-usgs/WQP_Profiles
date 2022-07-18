@@ -1,0 +1,1004 @@
+Category,Sub Category,Sort Within Category/Schema Location,Data Element XML Tag,Attribute,WQX Definition,Optionality,Data Type,Lookup Table Needed,Business Rule or Additional Description,Domain List?,Schema 2.2 File Name,Schema 3.0 File Name,BIODATA Standard Mapping.EDSC Data Standard,BIODATA Standard Mapping.EDSC Data Element,BIODATA Standard Mapping.EDSC Definition,BIODATA Standard Mapping.EDSC Compliance
+ORGANIZATION,ORG Description,01.00.00 Header,OrganizationDescriptionText,,"Header
+The particular word(s) regularly connected with a unique framework of authority within which a person or persons act, or are designated to act, towards some purpose.","Mandatory
+1 instance of OrganizationDescription for Organization",,,,,,,,,,
+,ORG Description,01.00.01,OrganizationIdentifier,,A designator used to uniquely identify a unique business establishment within a context.,Mandatory,"string min 1
+string max 35",,"Primary key for everything, unique on the planet, supplied by EPA upon application of trading partner.",,WQX_OrganizationDescription_v2.2.xsd,WQX_OrganizationDescription_v3.0.xsd,Contact,OrganizationIdentifier,A designator used to uniquely identify a unique business establishment within a context.,Compliant
+,ORG Description,01.00.02,OrganizationFormalName,,The legal designator (i.e. formal name) of an organization.,Mandatory,"string min 1
+string max 255",,Organization Name according to Trading Partner,,WQX_OrganizationDescription_v2.2.xsd,WQX_OrganizationDescription_v3.0.xsd,Contact,OrganizationFormalName,The legal designator (i.e. formal name) of an organization.,Compliant
+,ORG Description,01.00.03,OrganizationDescriptionText,,Information that further describes an organization.,Optional,string max 500,,,,WQX_OrganizationDescription_v2.2.xsd,WQX_OrganizationDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,ORG Description,01.00.04,TribalCode,,The code that represents the American Indian tribe or Alaskan Native entity.,Optional,"From domain values
+string max 3",,,Yes,WQX_OrganizationDescription_v2.2.xsd,WQX_OrganizationDescription_v3.0.xsd,Tribal,TribalCode,The code that represents the American Indian tribe or Alaskan Native entity.,Compliant
+,ORG Electronic Address,01.01.00 Header,ElectronicAddress,,"Header
+This section allows for the description of many electronic addresses per owning Organization.","Optional;
+0 to many instances of ElectronicAddress allowed per Organization",,,,,,,,,,
+,ORG Electronic Address,01.01.01,ElectronicAddressText,,"A resource address, usually consisting of the access protocol, the domain name, and optionally, the path to a file or location.","Conditional 
+(see business rule)",string max 120,,Required if electronic address type name is present,,WQX_ElectronicAddress_v2.2.xsd,WQX_ElectronicAddress_v3.0.xsd,Contact,ElectronicAddressText,"A resource address, usually consisting of the access protocol, the domain name, and optionally, the path to a file or location.",Compliant
+,ORG Electronic Address,01.01.02,ElectronicAddressTypeName,,The name that describes the electronic address type.,"Conditional 
+(see business rule)","From domain values
+string max 8",,Required if electronic address text is present,"Yes
+",WQX_ElectronicAddress_v2.2.xsd,WQX_ElectronicAddress_v3.0.xsd,Contact,ElectronicAddressTypeName,The name that describes the electronic address type.,Compliant
+,ORG Telephonic,01.02.00 Header,Telephonic,,"Header
+This section allows for the description of many telephone numbers per owning Organization.","Optional;
+0 to many instances of Telephonic allowed per Organization",,,,,,,,,,
+,ORG Telephonic,01.02.01,TelephoneNumberText,,The number that identifies a particular telephone connection.,"Conditional 
+(see business rule)",String max 15,,Required if telephone number type name is present,,WQX_Telephonic_v2.2.xsd,WQX_Telephonic_v3.0.xsd,Contact,TelephoneNumberText,The number that identifies a particular telephone connection.,Compliant
+,ORG Telephonic,01.02.02,TelephoneNumberTypeName,,The name that describes a telephone number type.,"Conditional 
+(see business rule)","From domain values
+string max 6",,Required if telephone number text is present,"Yes
+",WQX_Telephonic_v2.2.xsd,WQX_Telephonic_v3.0.xsd,Contact,TelephoneNumberTypeName,The name that describes a telephone number type.,Compliant
+,ORG Telephonic,01.02.03,TelephoneExtensionNumberText,,The number assigned within an organization to an individual telephone that extends the external telephone number.,Optional,String max 6,,Optional,,WQX_Telephonic_v2.2.xsd,WQX_Telephonic_v3.0.xsd,Contact,TelephoneExtensionNumberText,The number assigned within an organization to an individual telephone that extends the external telephone number.,Compliant
+,ORG Organization Address,01.03.00 Header,OrganizationAddress,,"Header
+This section allows for the description of up to three physical addresses for the owning Organization.","Optional;
+0 to 3 instances of OrganizationAddress allowed per Organization
+Only one address of each type permitted",,,,,,,,,,
+,ORG Organization Address,01.03.01,AddressTypeName,,"Categorizes an address as either location, shipping, or mailing address.","Conditional 
+(see business rule)","From domain values
+string max 8",,Required if organization address is present.  ,"Yes
+",WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,ORG Organization Address,01.03.02,AddressText,,"The address that describes the physical (geographic), shipping, or mailing location of an organization.","Conditional 
+(see business rule)",string max 50,,Required if Address Type Name is supplied.,,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,MailingAddressText or LocationAddressText,"""The exact address where a mail piece is intended to be delivered, including urban-style street address, rural route, and PO Box""
+or
+""The address that describes the physical (geographic) location of the front door or main entrance of a facility site, including urban-style street address or rural address.""",Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.03,SupplementalAddressText,,"The text that provides additional information about an address, including a building name with its secondary unit and number, an industrial park name, an installation name or descriptive text where no formal address is available.",Optional,string max 120,,,,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,SupplementalAddressText or SupplementalLocationText,"The text that provides additional information about a place, including a building name with its secondary unit and number, an industrial park name, an installation name or descriptive text where no formal address is available.
+Or
+The text that provides additional information to facilitate the delivery of a mail piece, including building name, secondary units, and mail stop or local box numbers not serviced by the U.S. Postal Service.",Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.04,LocalityName,,"The name of a city, town, village or other locality.",Optional,String max 30,,,,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,MailingAddressCityName or LocalityName,"The name of the city, town, or village where the mail is delivered.
+Or
+The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.",Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.05,StateCode,,"A code designator used to identify a principal administrative subdivision of the United States, Canada, or Mexico.","Conditional 
+(see business rule)","From domain values
+string max 2",,Required if Organization County Code is reported.,"Yes
+",WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,MailingAddressStateCode or LocationAddressStateCode,"A code designator used to identify a principal administrative subdivision of the United States, Canada, or Mexico.",Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.06,PostalCode,,"The combination of the 5-digit Zone Improvement Plan (ZIP) code and the four-digit extension code (if available) that represents the geographic segment that is a subunit of the ZIP Code, assigned by the U.S. Postal Service to a geographic location to facilitate mail delivery; or the postal zone specific to the country, other than the U.S., where the mail is delivered.",Optional,string max 10,,,,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,MailingAddressPostalCode or LocationAddressPostalCode,"The combination of the 5-digit Zone Improvement Plan (ZIP) code and the four-digit extension code (if available) that represents the geographic segment that is a subunit of the ZIP Code, assigned by the U.S. Postal Service to a geographic location to facilitate mail delivery; or the postal zone specific to the country, other than the U.S., where the mail is delivered.",Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.07,CountryCode,,A code designator used to identify a primary geopolitical unit of the world.,Optional,"From domain values
+string max 2",,,Yes,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,MailingAddressCountryCode or LocationAddressCountryCode,A code designator used to identify a primary geopolitical unit of the world.,Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+,ORG Organization Address,01.03.08,CountyCode,,A code designator used to identify a U.S. county or county equivalent.,Optional,"From domain values
+string max 3",,County codes must be reported using 3-digit FIPS codes.,Yes,WQX_OrganizationAddress_v2.2.xsd,WQX_OrganizationAddress_v3.0.xsd,Contact,LocationAddressCountyCode,A code designator used to identify a U.S. county or county equivalent.,Business Decision: WQX exchange did not want duplicate elements to track mailing and location addresses and thus combined them using an AddressType desgnator.
+PROJECT,PROJ Description,02.00.00 Header,Project,,"Header;
+This section allows for the description of Organization Projects.  ","Optional: 
+0 to many instances",,,,,,,,,,
+,PROJ Description,02.00.01,ProjectIdentifier,,A designator used to uniquely identify a data collection project within a context of an organization.,Mandatory,"string min 1
+string max 55",,"This short identifier supports the requirement to update or edit an existing project, subsequent to its initial entry, without repeating all of its component parts.",,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,ESAR,Project Identifier,A designator used to uniquely identify the project to organizations sharing data.,Compliant
+,PROJ Description,02.00.02,ProjectName,,The name assigned by the Organization (project leader or principal investigator) to the project.,Mandatory,"string min 1
+string max 512",,,,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,ESAR,Project Name,The name assigned to the Project by the project leader or principal investigator.,Compliant
+,PROJ Description,02.00.03,ProjectDescriptionText,,"Project description, which may include a description of the project purpose, summary of the objectives, or brief summary of the results of the project.","Conditional 
+(see business rule)",string max 4000,,Must provide either ProjectDescriptionText or supply a Project Attached Binary Object.,,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,ESAR,"ProjectPurposeText
+OR 
+ProjectObjectiveText 
+OR
+ProjectOutcomeDescription","A summary description of the
+purpose of, or the hypothesis to be
+tested by the project.
+OR     
+Summary of the objectives to be accomplished by the project.
+OR 
+A brief summary of the results of
+the project.",Business Decision: Data standard breaks out to further detail than desired for WQX sharing.
+,PROJ Description,02.00.04,SamplingDesignTypeCode,,A code used to identify the type of sampling design employed for this project to ensure that sampling activities can support project objectives.,Optional,"From domain values
+string min 1
+string max 20",,,Yes,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,,,,
+,PROJ Description,02.00.05,QAPPApprovedIndicator,,Indicates whether a Quality Assurance Project Plan (QAPP) has been approved for the submitted project.,Optional,boolean,,,,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,,,,
+,PROJ Description,02.00.06,QAPPApprovalAgencyName,,An outside approval authority identifier for the QAPP (e.g. EPA or State Organization).,Optional,string max 50,,,,WQX_Project_v2.2.xsd,WQX_Project_v3.0.xsd,,,,
+,PROJ Binary Object,02.01.00 Header,ProjectAttachedBinaryObject,,"Header;
+This section allows for the association of References and electronic attachments to the project, including formal Project Plan and any other documents, images, maps, photos, laboratory materials, geospatial coverages, and other objects associated with the Project..","Conditional 
+(see business rule)",,,"Multiple instances of ProjectAttachedBinaryObject per Organization instance.
+
+Must provide either ProjectDescriptionText or supply a Project Attached Binary Object.",,,,,,,
+,PROJ Binary Object,02.01.01,BinaryObjectFileName,,"The text describing the descriptive name used to represent the file, including file extension.","Conditional 
+(see business rule)","string min 1
+string max 255",,"Required only when ProjectAttachedBinaryObject is reported.
+Must provide either ProjectDescriptionText or supply a Project Attached Binary Object.",,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileName,"The text describing the descriptive name used to represent the file, including file extension.",Compliant
+,PROJ Binary Object,02.01.02,BinaryObjectFileTypeCode,,The text or acronym describing the binary content type of a file.,"Conditional 
+(see business rule)","string min 1
+string max 6",,"File text extension, free text not domain list validation.
+
+Required only when ProjectAttachedBinaryObject is reported.",,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileType,The text or acronym describing the binary content type of a file.,Compliant
+PROJECT MONITORING LOCATION WEIGHTING,Project Monitoring Location Weighting,02.02.00 Header  ,ProjectMonitoringLocationWeighting,,"Header
+This section describes the probability weighting information for a given Project / Monitoring Location Assignment.","Optional: 
+0 to many instances",,,,,,,,,,
+,Project Monitoring Location Weighting,02.02.01,MonitoringLocationIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the monitoring location.",Conditional (see business rules),"string min 1
+string max 55",,Required if Project Monitoring Location Weighting block is present.,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.02 Header,LocationWeightingFactorMeasure,,"Header;
+A measurement of the monitoring location selection weighting factor.","Conditional;
+Up to one allowed per instance of Project Monitoring Location Weighting",,,Required if Project Monitoring Location Weighting block is present.,,,,,,,
+,Project Monitoring Location Weighting,02.02.02.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Conditional (see business rules),string max 60,,                                                                                                                                   ,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.02.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Conditional (see business rules),"From domain values
+string max 12",,Required if Project Monitoring Location Weighting block is present.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.03,StatisticalStratumText,,Identifies the statistical stratum applied to this site.,Optional,string max 15,,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.04,LocationCategoryName,,"Free text describing a category of naturally similar site types, such as high-gradient.",Optional,String max 50,,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.05,LocationStatusName,,Indicates whether this site is active and available for sampling.,Optional,string max 15,,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.06,ReferenceLocationTypeCode,,Identifies whether this site is a reference or control site by specifying the reference location type,Optional,"From domain values
+string max 20",,,Yes,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.07,ReferenceLocationStartDate,,The calendar date on which the monitoring location started being used as a reference site.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.08,ReferenceLocationEndDate,,The calendar date on which the monitoring location stopped being used as a reference site.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09 Header,ReferenceLocationCitation,,"Header;
+Identifies the source that created or defined the Reference Location.","Optional
+May have 0 to 1 for each instance Project Monitoring Location Weighting",,,,,,,,,,
+,Project Monitoring Location Weighting,02.02.09.01,ResourceTitleName,,A name given to the resource,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if ReferenceLocationCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09.02,ResourceCreatorName,,An entity primarily responible for making the content of the resource.,Optional,string max 120,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09.03,ResourceSubjectText,,A topic of the content of the resource.,Optional,string max 4000,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09.04,ResourcePublisherName,,An entity responsible for making the resource available.,Optional,string max 60,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09.05,ResourceDate,,A date of an event in the lifecycle of the resource.,"Conditional 
+(see business rule)","date
+(YYYY-MM-DD)",,Required if ReferenceLocationCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.09.06,ResourceIdentifier,,An unambiguous reference to the resource within a given context.,"Conditional 
+(see business rule)","string min 1
+string max 255",,Required if ReferenceLocationCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Project Monitoring Location Weighting,02.02.10,CommentText,,General comments about the project monitoring location weighting. ,Optional,String max 4000,,,,WQX_ProjectMonitoringLocationWeighting_v2.2.xsd,WQX_ProjectMonitoringLocationWeighting_v3.0.xsd,,,,
+MONITORING LOCATION,Monitoring Location Identity,03.00.00 Header,MonitoringLocationIdentity,,"Header
+This section allows the owning Organization to describe monitoring locations.","Conditional: 
+0 to many instances",,,Monitoring Location Identity block is required for certain Activity Types.,,,,,,,
+,Monitoring Location Identity,03.00.01,MonitoringLocationIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the monitoring location.",Mandatory,"string min 1
+string max 55",,"This short identifier supports the requirement to update or edit an existing station, subsequent to its initial entry, without repeating all of its component parts.",,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,ESAR,Monitoring Location Identifier,A designator used to uniquely identify the Monitoring Location.,Compliant
+,Monitoring Location Identity,03.00.02,MonitoringLocationName,,The designator specified by the sampling organization for the site at which sampling or other activities are conducted.,Mandatory,"string min 1
+string max 255",,Free text name assigned to the Monitoring Location by the Trading Partner.,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,ESAR,MonitoringLocationName,The designator specified by the sampling organization for the site at which sampling or other activities are conducted.,Compliant
+,Monitoring Location Identity,03.00.03,MonitoringLocationTypeName,,The descriptive name for a type of monitoring location.,Mandatory,"From domain values
+string min 1
+string max 45",,,"Yes
+",WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,ESAR,MonitoringLocationTypeName,The descriptive name for a type of monitoring location.,Compliant
+,Monitoring Location Identity,03.00.04,MonitoringLocationDescriptionText,,Text description of the monitoring location.,Optional,string max 4000,,,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,ESAR,MonitoringLocationDescriptionText,Text description of the location of the monitoring location.,Compliant (uses EN Shared Schema Component definition)
+,Monitoring Location Identity,03.00.05,HUCEightDigitCode,,The 8 digit federal code used to identify the hydrologic unit of the monitoring location to the cataloging unit level of precision.,Optional,string max 8,,,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,Monitoring Location Identity,03.00.06,HUCTwelveDigitCode,,The 12 digit federal code used to identify the hydrologic unit of the monitoring location to the subwatershed level of precision.,Optional,string max 12,,,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,Monitoring Location Identity,03.00.07,TribalLandIndicator,,An indicator denoting whether the location is on a tribal land.,Optional,boolean,,,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,Contact,TribalLandIndicator,An indicator denoting whether the location is on a tribal land.,Compliant
+,Monitoring Location Identity,03.00.08,TribalLandName,,The name of an American Indian or Alaskan native area where the location exists.,Optional,string max 512,,,,WQX_MonitoringLocationIdentity_v2.2.xsd,WQX_MonitoringLocationIdentity_v3.0.xsd,Contact,TribalLandName,The name of an American Indian or Alaskan native area where the location exists.,Compliant
+,Monitoring Location Identity,03.00.09 Header,AlternateMonitoringLocationIdentity,,"Header;
+Alternate identifications of a monitoring location.",Optional; may have 0 to many for each instance of Monitoring Location,,,,,,,,,,
+,Monitoring Location Identity,03.00.09.01,MonitoringLocationIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the monitoring location.","Conditional 
+(see business rule)","string min 1
+string max 55",,Required if AlternateMonitoringLocationIdentity is reported,,WQX_AlternateMonitoringLocationIdentity_v2.2.xsd,WQX_AlternateMonitoringLocationIdentity_v3.0.xsd,ESAR,Monitoring Location Identifier,A designator used to uniquely identify the Monitoring Location.,Compliant
+,Monitoring Location Identity,03.00.09.02,MonitoringLocationIdentifierContext,,Identifies the source or data system that created or defined the monitoring location identifier,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if AlternateMonitoringLocationIdentity is reported,,WQX_AlternateMonitoringLocationIdentity_v2.2.xsd,WQX_AlternateMonitoringLocationIdentity_v3.0.xsd,ESAR,Monitoring Location Identifier Context,,Compliant
+,Monitoring Location Identity,03.00.10,DrainageAreaMeasure,,"Header;
+The drainage basin of a lake, stream, wetland, or estuary site. .","Optional;
+Up to one allowed per instance of WellInformation",,,Optional,,,WQX_MonitoringLocationIdentity_v3.0.xsd,,,,
+,Monitoring Location Identity,03.00.10.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if DrainageAreaMeasure block is reported.,,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Identity,03.00.10.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if DrainageAreaMeasure block is reported.,Yes,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Identity,03.00.11,ContributingDrainageAreaMeasure,,"Header;
+The contributing drainage area of a lake, stream, wetland, or estuary site.","Optional;
+Up to one allowed per instance of WellInformation",,,Optional,,,WQX_MonitoringLocationIdentity_v3.0.xsd,,,,
+,Monitoring Location Identity,03.00.11.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ContributingDrainageAreaMeasure block is reported.,,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Identity,03.00.11.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ContributingDrainageAreaMeasure block is reported.,Yes,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Geospatial,03.01.00 Header,MonitoringLocationGeospatial,,"Header;
+This section allows for the geospatial description of a monitoring station.  This section records the location in 3 dimensions.","Mandatory;
+one and only one allowed per instance of Monitoring Location.",,,Only 1 instance allowed per Monitoring Location instance,,,,,,,
+,Monitoring Location Geospatial,03.01.01,LatitudeMeasure,,The measure of the angular distance on a meridian north or south of the equator.,Mandatory,Decimal; up to 12 digits,,Signed Decimal Latitude with positive values north of the Equator,,WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,LatitudeMeasure,The measure of the angular distance on a meridian north or south of the equator.,Compliant
+,Monitoring Location Geospatial,03.01.02,LongitudeMeasure,,The measure of the angular distance on a meridian east or west of the prime meridian.,Mandatory,Decimal; up to 14 digits,,Signed Decimal Longitude with neg values west of Greenwich,,WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,LongitudeMeasure,The measure of the angular distance on a meridian east or west of the prime meridian.,Compliant
+,Monitoring Location Geospatial,03.01.03,SourceMapScale,,"The relationship or ratio between distance on a map and corresponding distance on the ground. Example 1:100,000 where 1 cm = 1 km","Conditional 
+(see business rule)",String max 60,,"Mandatory only when HorizonitalCollectionMethod Code is ""INTERPOLATION MAP""",,WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,SourceMapScale,The number that represents the proportional distance on the ground for one unit of measure on the map or photo.,Compliant
+,Monitoring Location Geospatial,03.01.04 Header,HorizontalAccuracyMeasure,,"Header;
+The horizontal measure of the relative accuracy of the latitude and longitude coordinates","Optional;
+Up to one allowed per instance of MonitoringLocationGeospatial",,,,,,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,HorizontalAccuracyMeasure,"The horizontal measure, in meters, of the relative accuracy of the latitude and longitude coordinates",Compliant
+,Monitoring Location Geospatial,03.01.04.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if HorizontalAccuracyMeasure block is reported,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Measure,HorizontalAccuracyMeasure / MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Compliant
+,Monitoring Location Geospatial,03.01.04.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,"Conditional 
+(see business rule)","From domain values
+string max 12",,Required if HorizontalAccuracyMeasure block is reported,"Yes
+",WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Measure,HorizontalAccuracyMeasure / MeasureUnitCode,The code that represents the unit for measuring the item.,Compliant
+,Monitoring Location Geospatial,03.01.05 Header,VerticalAccuracyMeasure,,"Header;
+The vertical measure of the relative accuracy of the latitude and longitude coordinates. ","Optional;
+Up to one allowed per instance of WellInformation",,,Optional,,,WQX_MonitoringLocationGeospatial_v3.0.xsd,,,,
+,Monitoring Location Geospatial,03.01.05.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if VerticalAccuracyMeasure block is reported.,,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Geospatial,03.01.05.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if VerticalAccuracyMeasure block is reported.,Yes,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Geospatial,03.01.06,HorizontalCollectionMethodName,,The name that identifies the method used to determine the latitude and longitude coordinates for a point on the earth.,Mandatory,"From domain values
+string min 1
+string max 70",,Valid code values correspond to those enumerated for this data element in the FRS XML schema.,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,HorizontalCollectionMethodName,The name that identifies the method used to determine the latitude and longitude coordinates for a point on the earth.,Compliant
+,Monitoring Location Geospatial,03.01.07,HorizontalCoordinateReferenceSystemDatumName,,The name that describes the reference datum used in determining latitude and longitude coordinates.,Mandatory,"From domain values
+string min 1
+string max 6",,Valid code values correspond to those enumerated for this data element in the FRS XML schema.,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,HorizontalCoordinateReferenceSystemDatumName,The name that describes the reference datum used in determining latitude and longitude coordinates.,Compliant
+,Monitoring Location Geospatial,03.01.08,VerticalMeasure,,"Header;
+The measure of elevation (i.e., the altitude), above or below a reference datum.","Optional;
+Up to one allowed per instance of MonitoringLocationGeospatial",,,,,,,,,,
+,Monitoring Location Geospatial,03.01.08.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if VerticalMeasure block is reported,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Lat/Long,VerticalMeasure / MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Compliant
+,Monitoring Location Geospatial,03.01.08.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,"Conditional 
+(see business rule)","From domain values 
+string max 12",,Required if VerticalMeasure block is reported,"Yes
+",WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Measure,VerticalMeasure / MeasureUnitCode,The code that represents the unit for measuring the item.,Compliant
+,Monitoring Location Geospatial,03.01.09,VerticalCollectionMethodName,,The name that identifies the method used to collect the vertical measure (i.e. the altitude) of a reference point.,"Conditional 
+(see business rule)","From domain values
+string max 50",,Required if Vertical Measure/MeasureValue is supplied,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,VerticalCollectionMethodName,The name that identifies the method used to collect the vertical measure (i.e. the altitude) of a reference point.,Compliant
+,Monitoring Location Geospatial,03.01.10,VerticalCoordinateReferenceSystemDatumName,,"The name of the reference datum used to determine the vertical measure (i.e., the altitude).","Conditional 
+(see business rule)","From domain values
+string max 10",,Required if Vertical Measure/MeasureValue is supplied,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Lat/Long,VerticalCoordinateReferenceSystemDatumName,"The name of the reference datum used to determine the vertical measure (i.e., the altitude).",Compliant
+,Monitoring Location Geospatial,03.01.11,CountryCode,,A code designator,Optional,"From domain values
+string max 2",,A code designator used to identify a primary geopolitical unit of the world.,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Contact,MailingAddressCountryCode or LocationAddressCountryCode,A code designator used to identify a primary geopolitical unit of the world.,"Business Decision: No direct link found in ESAR-Monitoring location, so definitions pulled from Contact standard."
+,Monitoring Location Geospatial,03.01.12,StateCode,,"A code designator used to identify a principal administrative subdivision of the United States, Canada, or Mexico.","Conditional 
+(see business rule)","From domain values
+string max 2",,Required if Monitoring Location CountyCode is reported.,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Contact,MailingAddressStateCode or LocationAddressStateCode,"A code designator used to identify a principal administrative subdivision of the United States, Canada, or Mexico.","Business Decision: No direct link found in ESAR-Monitoring location, so definitions pulled from Contact standard."
+,Monitoring Location Geospatial,03.01.13,CountyCode,,A code designator used to identify a U.S. county or county equivalent.,Optional,"From domain values
+string max 3",,County codes must be reported using 3-digit FIPS codes.,"Yes
+",WQX_MonitoringLocationGeospatial_v2.2.xsd,WQX_MonitoringLocationGeospatial_v3.0.xsd,Contact,LocationAddressCountyCode,A code designator used to identify a U.S. county or county equivalent.,"Business Decision: No direct link found in ESAR-Monitoring location, so definitions pulled from Contact standard."
+,Monitoring Location Well Information,03.02.00 Header,WellInformation,,"Header;
+Description of the attributes of a well","Optional
+May have 0 to 1 for each instance of MonitoringLocation",,,,,,,,,,
+,Monitoring Location Well Information,03.02.01,WellTypeText,,Identifies the primary well type.,"Conditional 
+(see business rule)","From domain values
+string max 255",,Required if WellInformation is reported.,Yes,WQX_WellInformation_v2.2.xsd,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.02,AquiferTypeName,,"The type of aquifer, such as confined or unconfined.",Optional,"From domain values 
+string max 255",yes,,"Yes
+",,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.03,NationalAquiferCode,,A code that designates the principal aquifer associated with groundwater.,Optional,"From domain values 
+string max 120",yes,,"Yes
+",,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.04 Header,AquiferInformation,,"Header;
+Description of the attributes of an aquifer","Optional;
+Up to one allowed per instance of MonitoringLocationWell",,,,,,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.04.01,LocalAquiferCode,,A code that designates the local aquifer associated with groundwater.,"Conditional 
+(see business rule)",string max 120,yes,"Required if AquiferInformation block is reported.
+
+Domain Values: This field will be validated against a domain value list only if the AquiferCodeContext element is set to one of a predefined list of contexts (e.g. Connecticut, Arizona, etc.).","Yes
+",,WQX_AquiferInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.04.02,LocalAquiferCodeContext,,The code that Identifies the source or data system that created or defined the identifier,"Conditional 
+(see business rule)","From domain values 
+string max 35",,"Required if AquiferInformation block is reported.
+
+Domain Values: This field can either be user-defined or populated from a predefined list of contexts (e.g. Connecticut, Arizona, WQXTEST, etc.).","Yes
+",,WQX_AquiferInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.04.03,LocalAquiferName,,A name that designates the local aquifer associated with groundwater.,"Conditional 
+(see business rule)",string max 255,,Required only if Aquifer Code and Aquifer Code Context are not from WQX Domain Value list (i.e. user-defined method),,WQX_WellInformation_v2.2.xsd,WQX_AquiferInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.04.04,LocalAquiferDescriptionText,,A description that designates the local aquifer associated with groundwater.,Optional,string max 512,,,,,WQX_AquiferInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.05,FormationTypeText,,"Name of the primary formation or soils unit, in which the well is completed.",Optional,"From domain values
+string max 50",,,Yes,WQX_WellInformation_v2.2.xsd,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.06 Header,WellHoleDepthMeasure,,"Header;
+Depth below land surface datum (LSD) to the bottom of the hole on completion of drilling.","Optional;
+Up to one allowed per instance of WellInformation",,,Optional,,,,,,,
+,Monitoring Location Well Information,03.02.06.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if WellHoleDepthMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.06.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if WellHoleDepthMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.07,ConstructionDate,,The date of construction when well was completed.,Optional,Date,,,,,WQX_WellInformation_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.08 Header,WellDepthMeasure,,"Header;
+Depth below land surface datum (LSD) to the bottom of the hole on completion of drilling. ie. completion depth","Optional;
+Up to one allowed per instance of WellInformation",,,Optional,,,,,,,
+,Monitoring Location Well Information,03.02.08.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if WellDepthMeasure block is reported.,,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Well Information,03.02.08.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if WellDepthMeasure block is reported.,Yes,,WQX_MeasureCompact_v3.0.xsd,,,,
+,Monitoring Location Binary Object,03.03.00 Header,AttachedBinaryObject,,"Header;
+This section allows for the association of References and electronic attachments to the Monitoring Location description including any other documents, images, maps, photos, laboratory materials, geospatial coverages, and other objects associated with the Project.","Optional; 
+may have 0 to many for each instance of Monitoring Location",,,Multiple instances of StationAttachedBinaryObject per Monitoring Location instance,,,,,,,
+,Monitoring Location Binary Object,03.03.01,BinaryObjectFileName,,"The text describing the descriptive name used to represent the file, including file extension.","Conditional 
+(see business rule)","string min 1
+string max 255",,Required if Monitoring Location AttachedBinaryObject present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileName,"The text describing the descriptive name used to represent the file, including file extension.",Compliant
+,Monitoring Location Binary Object,03.03.02,BinaryObjectFileTypeCode,,The text or acronym describing the binary content type of a file.,"Conditional 
+(see business rule)","string min 1
+string max 6",,Required if Monitoring Location AttachedBinaryObject present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileType,The text or acronym describing the binary content type of a file.,Compliant
+,Biological Habitat Index,04.00 Header,BiologicalHabitatIndex,,"Header;
+This section allows for the reporting of habitat and biotic integrity indices as a representation of water quality conditions.","Optional
+May have 0 to many for each instance of Organization",,,,,,,,,,
+,Biological Habitat Index,4.01,IndexIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the index record.","Conditional 
+(see business rule)","string min 1
+string max 55",,Required if BiologicalHabitatIndex is reported.,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,Biological Habitat Index,04.02 Header,IndexType,,"Header;
+This section identifies the index type reported as part of a biological or habitat index.","Conditional
+Required if BiologicalHabitatIndex is reported.",,,,,,,,,,
+,Biological Habitat Index,04.02.01,IndexTypeIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the index (Organization specific).","Conditional 
+(see business rule)","string min 1
+string max 50",,Required if IndexType is reported.,"yes
+",WQX_IndexType_v2.2.xsd,WQX_IndexType_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.02,IndexTypeIdentifierContext,,Identifies the source or data system that created or defined the index.,"Conditional 
+(see business rule)",string max 50,,Required if IndexType is reported.,,WQX_IndexType_v2.2.xsd,WQX_IndexType_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.03,IndexTypeName,,Name of the habitat or biotic integrity index.,"Conditional 
+(see business rule)",string max 100,,Required if IndexType is reported.,,WQX_IndexType_v2.2.xsd,WQX_IndexType_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04 Header,IndexTypeCitation,,"Header;
+Provides additional description of the source that created or defined the index.","Optional
+May have 0 to 1 for each instance of BiologicalHabitatIndex",,,,,,,,,,
+,Biological Habitat Index,04.02.04.01,ResourceTitleName,,A name given to the resource,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if IndexTypeCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04.02,ResourceCreatorName,,An entity primarily responible for making the content of the resource.,Optional,string max 120,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04.03,ResourceSubjectText,,A topic of the content of the resource.,Optional,string max 4000,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04.04,ResourcePublisherName,,An entity responsible for making the resource available.,Optional,string max 60,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04.05,ResourceDate,,A date of an event in the lifecycle of the resource.,"Conditional 
+(see business rule)","date
+(YYYY-MM-DD)",,Required if IndexTypeCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.04.06,ResourceIdentifier,,An unambiguous reference to the resource within a given context.,"Conditional 
+(see business rule)","string min 1
+string max 255",,Required if IndexTypeCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Biological Habitat Index,04.02.05,IndexTypeScaleText,,Provides a description of the scale used for the index.,Optional,string max 50,,,,WQX_IndexType_v2.2.xsd,WQX_IndexType_v3.0.xsd,,,,
+,Biological Habitat Index,4.03,IndexScore,,Provides the score for the  index.,"Conditional 
+(see business rule)",string max 60,,Required if BiologicalHabitatIndex is reported.,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,Biological Habitat Index,4.04,IndexQualifierCode,,A code used to identify any qualifying issues that affect the index.,Optional,string max 35,,,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,Biological Habitat Index,4.05,IndexCommentText,,Free text with general comments concerning the index.,Optional,string max 4000,,,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,Biological Habitat Index,4.06,IndexCalculatedDate,,Date on which the index was calculated.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,Biological Habitat Index,4.07,MonitoringLocationIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the monitoring location.","Conditional 
+(see business rule)","string min 1
+string max 55",,Required if BiologicalHabitatIndex is reported.,,WQX_BiologicalHabitatIndex_v2.2.xsd,WQX_BiologicalHabitatIndex_v3.0.xsd,,,,
+,"ACTIVITY    
+Description",05.00.00 Header,Activity,,"Header;
+This section allows for the reporting of monitoring activities conducted at a Monitoring Location","Optional
+May have 0 to many for each instance of Organization",,,,,,,,,,
+,"ACTIVITY    
+Description",05.00.01,ActivityIdentifier,,Designator that uniquely identifies an activity within an organization.,Mandatory,"string min 1
+string max 55",,"This short identifier supports the requirement to update or edit an existing activity, subsequent to its initial entry, without repeating all of its component parts.",,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Field Activity Identifier,A designator used to uniquely identify a field activity within a context.,Business Decision: WQX needed more generic term to incorporate non-field related activities.
+,"ACTIVITY    
+Description",05.00.02,ActivityIdentifierUserSupplied,,User Supplied designator that uniquely identifies an activity within an organization..,Optional,string max 55,,This short identifier supports cross mapping user owned sample ids to WQX unquie activity designatos. (Chain of custody Identifier) URL: https://water.usgs.gov/nawqa/protocols/OFR-93-409/algp28.html,,,WQX_ActivityDescription_v3.0.xsd,ESAR,Field Activity Identifier,A designator used to uniquely identify a field activity within a context.,Business Decision: WQX needed more generic term to incorporate non-field related activities.
+,"ACTIVITY    
+Description",05.00.03,ActivityTypeCode,,The text describing the type of activity.,Mandatory,"From domain values
+string min 1
+string max 70",,,"Yes
+",WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Field Activity Type,The text describing the type of field activity being performed,Business Decision: WQX needed more generic term to incorporate non-field related activities.
+,"ACTIVITY    
+Description",05.00.04,ActivityMediaName,,Name or code indicating the environmental medium where the sample was taken.,Mandatory,"From domain values
+string min 1
+string max 20",,,"Yes
+",WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Sample Media Name,Name or code indicating the environmental medium where the sample was taken.,"Business Decision:  The team needed to use this field for potentially more than sample collection, so broader term was used."
+,"ACTIVITY    
+Description",05.00.05,ActivityMediaSubdivisionName,,Name or code indicating the environmental matrix as a subdivision of the sample media.,Optional,"From domain values
+string max 60",,,"Yes
+",WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Sample Media Subdivision Name,Name or code indicating the environmental matrix as a subdivision of the sample media. ,"Business Decision:  The team needed to use this field for potentially more than sample collection, so broader term was used."
+,"ACTIVITY    
+Description",05.00.06,ActivityStartDate,,The calendar date on which the field activity was started.,Mandatory,"Date
+(YYYY-MM-DD)",,,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Field Activity Start Date,The starting date that a field activity was started.,"Business Decision:  The team needed to use this field for more than just field activities, so broader term was used."
+,"ACTIVITY    
+Description",05.00.07 Header,ActivityStartTime,,"Header;
+The measure of clock time when the field activity began.",Optional ,,,,,,,,,,
+,"ACTIVITY    
+Description",05.00.07.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when ActivityStartTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,Field Activity Start Time,The starting time that a field activity was started.,"Business Decision:  The team needed to use this field for more than just field activities, so broader term was used."
+,"ACTIVITY    
+Description",05.00.07.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when ActivityStartTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,"ACTIVITY    
+Description",05.00.08,ActivityEndDate,,The calendar date when the field activity was completed.,Optional,"Date
+(YYYY-MM-DD)",,,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,Field Activity End Date,The ending date that a field activity was finished.,"Business Decision:  The team needed to use this field for more than just field activities, so broader term was used."
+,"ACTIVITY    
+Description",05.00.09 Header,ActivityEndTime,,"Header;
+The measure of clock time when the field activity ended.",Optional,,,,,,,,,,
+,"ACTIVITY    
+Description",05.00.09.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when ActivityEndTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,Field Activity End Time,The ending time that a field activity was finished.,"Business Decision:  The team needed to use this field for more than just field activities, so broader term was used."
+,"ACTIVITY    
+Description",05.00.09.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when ActivityEndTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,"ACTIVITY    
+Description",05.00.10,ActivityRelativeDepthName,,The name that indicates the approximate location within the water column at which the activity occurred. ,Optional,"From domain values
+string max 30",,,Yes,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,"ACTIVITY    
+Description",05.00.11 Header,ActivityDepthHeightMeasure,,"Header;
+A measurement of the vertical location (measured from a reference point) at which an activity occurred.","Optional (see business rules);
+Up to one allowed per instance of ActivityDescription",,,"Optional;
+May not exist with  ActivityTopDepthHeightMeasureValue",,,,,,,
+,"ACTIVITY    
+Description",05.00.11.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ActivityDepthHeightMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventDepthHeightMeasure/MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.11.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ActivityDepthHeightMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventDepthHeightMeasure/MeasureUnitCode,The code that represents the unit for measuring the item.,Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.12 Header,ActivityTopDepthHeightMeasure,,"Header;
+A measurement of the upper vertical location of a vertical location range (measured from a reference point) at which an activity occurred.","Conditional (see business rules);
+Up to one allowed per instance of ActivityDescription",,,"Conditional: 
+May not exist with ActivityDepthHeightMeasureValue.
+Requied if activity type is Sample-Integrated Vertical Profile",,,,,,,
+,"ACTIVITY    
+Description",05.00.12.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ActivityTopDepthHeightMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventTopDepthHeightMeasure/MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.12.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ActivityTopDepthHeightMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventTopDepthHeightMeasure/MeasureUnitCode,The code that represents the unit for measuring the item.,Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.13 Header,ActivityBottomDepthHeightMeasure,,"Header;
+A measurement of the lower vertical location of a vertical location range (measured from a reference point) at which an activity occurred.","Conditional (see business rules);
+Up to one allowed per instance of ActivityDescription",,,"Conditional:
+May not exist with ActivityDepthHeightMeasureValue.
+Requied if activity type is Sample-Integrated Vertical Profile",,,,,,,
+,"ACTIVITY    
+Description",05.00.13.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ActivityBottomDepthHeightMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventBottomDepthHeightMeasure/MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.13.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ActivityBottomDepthHeightMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,SampleEventTopDepthHeightMeasure/MeasureUnitCode,The code that represents the unit for measuring the item.,Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.14,ActivityDepthAltitudeReferencePointText,,The reference used to indicate the datum or reference used to establish the depth/altitude of an activity.,Optional,string max 125,,,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,ESAR,SampleEventDepthAltitudeReferencePointText,The reference used to indicate the datum or reference used to establish the depth/altitude of collection.,Business Decision: Team used term Activity over SampleEvent to make usage more generic.
+,"ACTIVITY    
+Description",05.00.15,ProjectIdentifier,,A designator used to uniquely identify a data collection project within a context of an organization.,Mandatory,"string min 1
+string max 55",,Multiple instances possible for each Activity instance,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,Business Decision: This is a linkage element; No corresponding element found in EDSC standards at this level of hierarchy.
+,"ACTIVITY    
+Description",05.00.16,ActivityConductingOrganizationText,,A name of the Organization conducting an activity.,Optional,string max 120,,Multiple instances possible for each Monitoring Activity instance,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,Business Decision: This is a linkage element; No corresponding element found in EDSC standards at this level of hierarchy.
+,"ACTIVITY    
+Description",05.00.17,MonitoringLocationIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the monitoring location.",Conditional (see business rules),"string min 1
+string max 55",,"Although the schema doesn't enforce this, some activity types will require that a monitoring location is present.
+
+This MonitoringLocationIdentifer needs to correspond to either a MonitoringLocationIdentifier reported in the MonitoringLocationIdentity block of this submission or previously submitted to the system.",,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,Business Decision: This is a linkage element; No corresponding element found in EDSC standards at this level of hierarchy.
+,"ACTIVITY    
+Description",05.00.18,SamplingComponentName,,Single entity within a sampling frame at which a collection procedure or protocol was performed.,Optional,string max 120,,,,WQX_BiologicalHabitatCollectionInformation_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,
+,"ACTIVITY    
+Description",05.00.19,ActivityCommentText,,General comments concerning the activity.,Optional,String max 4000,,,,WQX_ActivityDescription_v2.2.xsd,WQX_ActivityDescription_v3.0.xsd,,,,Business Decision: The team chose ActivityComments since the term is more generic and also to be consistent with the use of the term “Comments’ in other areas of the schema.
+,"ACTIVITY
+Location",05.01.00 Header,ActivityLocation,,"Header;
+This section allows for the geospatial description of actual monitoring site, if it is different from that described for in the formal station description.  ","Optional;
+defaults to Station Lat/Long reported in the formal Station Description if not present",,,Only 1 instance allowed per Sample instance,,,,,,,
+,"ACTIVITY
+Location",05.01.01,LatitudeMeasure,,The measure of the angular distance on a meridian north or south of the equator.,"Conditional 
+(see business rule)",Decimal; up to 12 digits,,"Signed Decimal Latitude with positive values north of the Equator.
+Required if ActivityLocation is supplied.",,WQX_ActivityLocation_v2.2.xsd,WQX_ActivityLocation_v3.0.xsd,Lat/Long,LatitudeMeasure,The measure of the angular distance on a meridian north or south of the equator.,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"ACTIVITY
+Location",05.01.02,LongitudeMeasure,,The measure of the angular distance on a meridian east or west of the prime meridian.,"Conditional 
+(see business rule)",Decimal; up to 14 digits,,"Signed Decimal Longitude with neg values west of Greenwich
+Required if ActivityLocation is supplied.",,WQX_ActivityLocation_v2.2.xsd,WQX_ActivityLocation_v3.0.xsd,Lat/Long,LongitudeMeasure,The measure of the angular distance on a meridian east or west of the prime meridian.,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"ACTIVITY
+Location",05.01.03,SourceMapScale,,"The relationship or ratio between distance on a map and corresponding distance on the ground. Example 1:100,000 where 1 cm = 1 km","Conditional 
+(see business rule)",string max 60,,"Mandatory only when HorizonitalCollectionMethod Code is ""INTERPOLATION MAP""",,WQX_ActivityLocation_v2.2.xsd,WQX_ActivityLocation_v3.0.xsd,Lat/Long,SourceMapScale,The number that represents the proportional distance on the ground for one unit of measure on the map or photo.,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"ACTIVITY
+Location",05.01.04 Header,HorizontalAccuracyMeasure,,"Header;
+The horizontal measure of the relative accuracy of the latitude and longitude coordinates","Optional;
+Up to one allowed per instance of MonitoringLocationGeospatial",,,,,,,Lat/Long,HorizontalAccuracyMeasure,"The horizontal measure, in meters, of the relative accuracy of the latitude and longitude coordinates",Compliant
+,"ACTIVITY
+Location",05.01.04.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Measure,VerticalMeasure / MeasureValue,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Compliant
+,"ACTIVITY
+Location",05.01.04.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,"Conditional 
+(see business rule)","From domain values
+string max 12",,,"Yes
+",WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,Measure,VerticalMeasure / MeasureUnitCode,The code that represents the unit for measuring the item.,Compliant
+,"ACTIVITY
+Location",05.01.05,HorizontalCollectionMethodName,,The name that identifies the method used to determine the latitude and longitude coordinates for a point on the earth.,"Conditional 
+(see business rule)","From domain values
+string min 1
+string max 70",,"Valid code values correspond to those enumerated for this data element in the FRS XML schema.
+Required if ActivityLocation is supplied.","Yes
+",WQX_ActivityLocation_v2.2.xsd,WQX_ActivityLocation_v3.0.xsd,Lat/Long,HorizontalCollectionMethodName,The name that identifies the method used to determine the latitude and longitude coordinates for a point on the earth.,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"ACTIVITY
+Location",05.01.06,HorizontalCoordinateReferenceSystemDatumName,,The name that describes the reference datum used in determining latitude and longitude coordinates.,"Conditional 
+(see business rule)","From domain values
+string min 1
+string max 6",,"Valid code values correspond to those enumerated for this data element in the FRS XML schema.
+Required if ActivityLocation is supplied.","Yes
+",WQX_ActivityLocation_v2.2.xsd,WQX_ActivityLocation_v3.0.xsd,Lat/Long,HorizontalCoordinateReferenceSystemDatumName or Code,The code that represents the reference datum used in determining latitude and longitude coordinates.,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"ACTIVITY
+Location",05.01.07,ActivityLocationDescriptionText,,Text description of the activity location.,Optional,string max 4000,,,,,WQX_ActivityLocation_v3.0.xsd,Lat/Long,,,Compliant (ESAR has no geospatial elements tracked at activity level. Element mapping from Lat/Long standard used.)
+,"BIOLOGICAL ACTIVITY    
+Description",05.02.00 Header,BiologicalActivityDescription,,"Header;
+This section allows for the reporting of biological monitoring activities conducted at a Monitoring Location","Optional
+May have 0 to 1 for each instance of Activity",,,,,,,,,,
+,"BIOLOGICAL ACTIVITY    
+Description",05.02.01,AssemblageSampledName,,An association of interacting populations of organisms in a given waterbody.,Optional,"From domain values
+string max 50",,"Required if ActivityMediaName is ""Biological""",Yes,WQX_BiologicalActivityDescription_v2.2.xsd,WQX_BiologicalActivityDescription_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02 Header,BiologicalHabitatCollectionInformation,,"Header;
+Allows for the reporting of biological habitat sample collection information","Optional
+May have 0 to one for each instance of BiologicalActivityDescription",,,,,,,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.01 Header,CollectionDuration,,"Header;
+The length of time a collection procedure or protocol was performed (e.g. total energized time for electrofishing, or total time kick net used). ","Optional;
+Up to one allowed per instance of BiologicalHabitatColectionInformation",,,,,,,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.01.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if CollectionDuration block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.01.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if CollectionDuration block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.02 Header,CollectionArea,,"Header;
+The area of a collection procedure or protocol was performed (e.g. total area coverage for electrofishing, or total area  kick net used). ","Optional;
+Up to one allowed per instance of BiologicalHabitatColectionInformation",,,,,,WQX_BiologicalHabitatCollectionInformation_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.02.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if CollectionArea block is reported.,,,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.02.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if CollectionArea block is reported.,Yes,,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.03 Header,CollectionEffort,,"Header;
+The number of individuals or equipment deployed to collect the sample.",Optional,,,,,,WQX_BiologicalHabitatCollectionInformation_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.03.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if CollectionEffort block is reported.,,,WQX_CollectionEffort_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.03.02,GearProcedureUnitCode,,The procedural code  or equipment that represents the unit for measuring the effort.,Optional,"From domain values
+ string max 35",yes,Required if CollectionEffort block is reported,,,WQX_CollectionEffort_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.04 Header,ReachLengthMeasure,,"Header;
+A measure of the water body length distance in which the procedure or protocol was performed.","Optional;
+Up to one allowed per instance of BiologicalHabitatColectionInformation",,,,,,,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.04.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ReachLengthMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.04.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ReachLengthMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.05 Header,ReachWidthMeasure,,"Header;
+A measurement of the reach width during collection procedures.","Optional;
+Up to one allowed per instance of BiologicalHabitatColectionInformation",,,,,,,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.05.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ReachWidthMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.05.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ReachWidthMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.06,CollectionDescriptionText,,Free text with general comments concerning the index,Optional,string max 4000,,,,,,,,,
+,BIOLOGICAL Habitat Collection Information,05.02.02.07,PassCount,,The number of passes through the water from which the sample was collected.,Optional,string max 60,,,,WQX_BiologicalHabitatCollectionInformation_v2.2.xsd,WQX_BiologicalHabitatCollectionInformation_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08 Header,NetInformation,,"Header;
+Allows for the reporting of net sample collection information","Optional
+May have 0 to one for each instance of BiologicalHabitatCollectionInformation",,,,,,,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.01,NetTypeName,,The text describing the type of net.,"Conditional 
+(see business rule)","From domain values
+string min 1
+string max 60",,Required if NetInformation block is reported.,Yes,WQX_NetInformation_v2.2.xsd,WQX_NetInformation_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.02 Header,NetSurfaceAreaMeasure,,"Header;
+A measurement of the effective surface area of the net used during biological monitoring sample collection.","Optional
+May have 0 to one instance per instance of NetInformation",,,,,,,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.02.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if NetSurfaceAreaMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.02.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if NetSurfaceAreaMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.03 Header,NetMeshSizeMeasure,,"Header;
+A measurement of the mesh size of the net used during biological monitoring sample collection.","Optional
+May have 0 to one instance per instance of NetInformation",,,,,,,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.03.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if NetMeshSizeMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.03.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if NetMeshSizeMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.04 Header,BoatSpeedMeasure,,"Header;
+A measurement of the boat speed during biological monitoring sample collection.","Conditional;
+Up to one allowed per instance of NetInformation",,,"Required if NetTypeName = ""Net/Horizontal Tow""",,,,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.04.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if BoatSpeedMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.04.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if BoatSpeedMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.05,CurrentSpeedMeasure,,"Header;
+A measurement of the current during biological monitoring sample collection.","Optional;
+Up to one allowed per instance of NetInformation",,,,,,,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.05.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if CurrentSpeedMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,BIOLOGICAL ACTIVITY Net Information,05.02.02.08.05.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if CurrentSpeedMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,"BIOLOGICAL ACTIVITY    
+Description",05.02.03,ToxicityTestType,,Identifies the type of toxicity as either Acute or Chronic.,Optional,"From domain values
+string max 30",,,Yes,WQX_BiologicalActivityDescription_v2.2.xsd,WQX_BiologicalActivityDescription_v3.0.xsd,,,,
+,"BIOLOGICAL ACTIVITY    
+Description",05.02.04,HabitatSelectionMethod,,The monitoring approach by which each habitat was chosen to sample. (e.g. random),"Conditional 
+(see business rule)",From domain values string max 35,yes,"Required when Activity Assemblage is ""Benthic Macroinvertebrates"" ","Yes
+",,WQX_BiologicalActivityDescription_v3.0.xsd,,,,
+,"SAMPLE 
+Description",05.03.00 Header,SampleDescription,,"Header;
+header in schema for Sample only","Optional 
+May have 0 to 1 for each instance of Activity",,,Several elements are required when SampleDescription block is reported (see below),,,,,,,
+,"SAMPLE 
+Description",05.03.01 Header,SampleCollectionMethod,,"Header:
+Identifies sample collection or measurement method procedures. Where a documented sample collection method has been employed, this enables the data provider to indicate the documented method that was employed during the field sample collection. Otherwise, the sample collection procedure will best be described in a freeform text.",Optional,,,,,,,ESAR,Field Sample Collection Method,Identifies sample collection or measurement method procedures.,Compliant
+,"SAMPLE 
+Description",05.03.01.01,MethodIdentifier,,The identification number or code assigned by the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 35",,Required when SampleCollectionMethod is present. ,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR / Method,Field Sample Collection Method / Method Identifier,The identification number or code assigned by the method publisher.,Compliant
+,"SAMPLE 
+Description",05.03.01.02,MethodIdentifierContext,,Identifies the source or data system that created or defined the identifier.,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required when SampleCollectionMethod is present. ,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR / Method,Field Sample Collection Method / Method Identifier (metadata),Identifies the source or data system that created or defined the identifier.,Compliant
+,"SAMPLE 
+Description",05.03.01.03,MethodName,,The title that appears on the method from the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 250",,Required when SampleCollectionMethod is present. ,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR / Method,Field Sample Collection Method / Method Name,Identifying information about the method(s) followed to prepare a sample for analysis.,Compliant
+,"SAMPLE 
+Description",05.03.01.04,MethodQualifierTypeName,,"Identifier of type of method that identifies it as reference, equivalent, or other.",Optional,string max 25,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR / Method,Field Sample Collection Method / MethodQualifierType,"Identifier of type of method that identifies it as reference, equivalent, or other.",Compliant
+,"SAMPLE 
+Description",05.03.01.05,MethodDescriptionText,,A brief summary that provides general information about the method.,Optional,string max 4000,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR / Method,Sample Preparation Method / MethodDescriptionText,A brief summary that provides general information about the method.,Compliant
+,"SAMPLE 
+Description",05.03.02,SampleCollectionEquipmentName,,The name that represents equipment used in collecting the sample.,"Conditional 
+(see business rule)","From domain values
+string min 1
+string max 60",,"Required when SampleCollectionMethod is present. 
+
+If NetInformation block is present, then the TypeName for the SampleCollectionEquipmentName must match the NetTypeName that is supplied.","Yes
+",WQX_SampleDescription_v2.2.xsd,WQX_SampleDescription_v3.0.xsd,ESAR,FieldActivityEquipment / EquipmentName,A designator used to uniquely identify the instrument or equipment used for the activity.,Business Decision: Team used term Sampling over FieldActivity to make usage more specific.
+,"SAMPLE 
+Description",05.03.03,SampleCollectionEquipmentCommentText,,Free text with general comments further describing the sample collection equipment.,Optional,String max 4000,,,,WQX_SampleDescription_v2.2.xsd,WQX_SampleDescription_v3.0.xsd,ESAR,FieldActivityEquipment / EquipmentDescription,Description of instrument or equipment or configuration used for the activity.,Business Decision: Team used term Sampling over FieldActivity to make usage more specific.
+,SAMPLE Prep,05.03.04 Header,SamplePreparation,,"Header
+This section describes a sample preparation procedure which may be conducted on an initial Sample or on subsequent subsamples.","Optional
+May have 0 to 1 for each instance of Activity",,,,,,,,,,
+,SAMPLE Prep,05.03.04.01 Header,SamplePreparationMethod,,"Header
+Identifying information about the method(s) followed to prepare a sample for analysis.",Optional,,,,,,,ESAR,Sample Preparation Method,Identifying information about the method(s) followed to prepare a sample for analysis.,Compliant
+,SAMPLE Prep,05.03.04.01.01,MethodIdentifier,,The identification number or code assigned by the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 35",,Required if Sample Preparation Method block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod / MethodIdentifier,The identification number or code assigned by the method publisher.,Compliant
+,SAMPLE Prep,05.03.04.01.02,MethodIdentifierContext,,Identifies the source or data system that created or defined the identifier.,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if Sample Preparation Method block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod / MethodIdentifier Context (meta data),Identifies the source or data system that created or defined the identifier.,Compliant
+,SAMPLE Prep,05.03.04.01.03,MethodName,,The title that appears on the method from the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 250",,Required if Sample Preparation Method block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod  / MethodName,The title that appears on the method from the method publisher.,Compliant
+,SAMPLE Prep,05.03.04.01.04,MethodQualifierTypeName,,"Identifier of type of method that identifies it as reference, equivalent, or other.",Optional,string max 25,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod / MethodQualifierType,"Identifier of type of method that identifies it as reference, equivalent, or other.",Compliant
+,SAMPLE Prep,05.03.04.01.05,MethodDescriptionText,,A brief summary that provides general information about the method.,Optional,string max 4000,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod  / MethodDescriptionText,A brief summary that provides general information about the method.,Compliant
+,SAMPLE Prep,05.03.04.02,SampleContainerLabelName,,The identification number or code assigned by the LAB or data collector.. Sample Identification Codes and Labeling,Optional,string max 60,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Method,SamplePreparationMethod  / MethodDescriptionText,A brief summary that provides general information about the method.,Compliant
+,SAMPLE Prep,05.03.04.03,SampleContainerTypeName,,The text describing the sample container type.,Optional,"From domain values
+string max 60",,,"Yes
+",WQX_SamplePreparation_v2.2.xsd,WQX_SamplePreparation_v3.0.xsd,ESAR,SampleContainerTypeName,The text describing the sample container type.,Compliant
+,SAMPLE Prep,05.03.04.04,SampleContainerColorName,,The text describing the sample container color.,Optional,"From domain values
+string max 60",,,"Yes
+",WQX_SamplePreparation_v2.2.xsd,WQX_SamplePreparation_v3.0.xsd,ESAR,SampleContainerColorName,The text describing the sample container color.,Compliant
+,SAMPLE Prep,05.03.04.05,ChemicalPreservativeUsedName,,Information describing the chemical means to preserve the sample.,Optional,string max 250,,,,WQX_SamplePreparation_v2.2.xsd,WQX_SamplePreparation_v3.0.xsd,ESAR - Sample Treatment,ChemicalPreservativeUsedName,Information describing the chemical means to preserve the sample.,Compliant
+,SAMPLE Prep,05.03.04.06,ThermalPreservativeUsedName,,Information describing the temperature means used to preserve the sample.,Optional,"From domain values
+string max 250",,,"Yes
+",WQX_SamplePreparation_v2.2.xsd,WQX_SamplePreparation_v3.0.xsd,ESAR - Sample Treatment,ThermalPreservativeUsedName,Information describing the temperature means used to preserve the sample.,Compliant
+,SAMPLE Prep,05.03.04.07,SampleTransportStorageDescription,,The text describing sample handling and transport procedures used.,Optional,string max 1999,,,,WQX_SamplePreparation_v2.2.xsd,WQX_SamplePreparation_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,"SAMPLE 
+Description",05.03.05,HydrologicCondition,,"Hydrologic condition is the hydrologic condition that is represented by the sample collected (i.e. ? normal, falling, rising, peak stage).",Optional,"From domain values
+string max 60",yes,,,,WQX_SampleDescription_v3.0.xsd,,,,
+,"SAMPLE 
+Description",05.03.06,HydrologicEvent,,"A hydrologic event that is represented by the sample collected (i.e. - storm, drought, snowmelt).",Optional,"From domain values
+string max 60",yes,,,,WQX_SampleDescription_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.00 Header,ActivityMetric,,"Header;
+This section allows for the reporting of metrics to support habitat or biotic integrity indices.","Optional
+May have 0 to many for each instance of Activity",,,,,,,,,,
+,ACTIVITY Metric,05.04.01 Header,ActivityMetricType,,"Header;
+This section identifies the metric type reported as part of an activity metric.",Conditional (see Business Rules),,,Required if ActivityMetric block is reported,,,,,,,
+,ACTIVITY Metric,05.04.01.01,MetricTypeIdentifier,,"A designator used to describe the unique name, number, or code assigned to identify the metric (Organization specific).","Conditional 
+(see business rule)",string max 50,,"Required if ActivityMetricType is reported.
+Domain values: This field will be validated against a domain value list only if the MetricTypeIdentifierContext element is set to one of a predefined list of contexts (e.g. USEPA)","Yes, but see note in business rules.",WQX_ActivityMetricType_v2.2.xsd,WQX_ActivityMetricType_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.02,MetricTypeIdentifierContext,,Identifies the source or data system that created or defined the metric.,"Conditional 
+(see business rule)",string max 50,,Required if ActivityMetricType is reported.,,WQX_ActivityMetricType_v2.2.xsd,WQX_ActivityMetricType_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.03,MetricTypeName,,Name of the activity metric.,"Conditional 
+(see business rule)",string max 100,,Required only if MetricTypeIdentifier and MetricTypeIdentifierContext are not from WQX Domain Value list (i.e. user-defined metric type),,WQX_ActivityMetricType_v2.2.xsd,WQX_ActivityMetricType_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04 Header,MetricTypeCitation,,"Header;
+Provides additional description of the source that created or defined the metric.","Optional
+May have 0 to 1 for each instance ActivityMetricType",,,,,,,,,,
+,ACTIVITY Metric,05.04.01.04.01,ResourceTitleName,,A name given to the resource,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if MetricCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04.02,ResourceCreatorName,,An entity primarily responible for making the content of the resource.,Optional,string max 120,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04.03,ResourceSubjectText,,A topic of the content of the resource.,Optional,string max 4000,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04.04,ResourcePublisherName,,An entity responsible for making the resource available.,Optional,string max 60,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04.05,ResourceDate,,A date of an event in the lifecycle of the resource.,"Conditional 
+(see business rule)","date
+(YYYY-MM-DD)",,Required if MetricCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.04.06,ResourceIdentifier,,An unambiguous reference to the resource within a given context.,"Conditional 
+(see business rule)","string min 1
+string max 255",,Required if MetricCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.05,MetricTypeScaleText,,Provides a description of the scale used for the activity metric.,Optional,string max 50,,,,WQX_ActivityMetricType_v2.2.xsd,WQX_ActivityMetricType_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.01.06,FormulaDescriptionText,,Provides a description of the formula used to calculate the activity metric score.,Optional,string max 4000,,,,WQX_ActivityMetricType_v2.2.xsd,WQX_ActivityMetricType_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.02 Header,MetricValueMeasure,,"Header;
+A non-scaled value calculated from raw results that may be scaled into a metric score.","Optional;
+Up to one allowed per instance of ActivityMetric",,,,,,,,,,
+,ACTIVITY Metric,05.04.02.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if MetricValueMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.02.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if MetricValueMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.03,MetricScore,,Provides the scaled or calculated score for the activity metric.,"Conditional 
+(see business rule)",string max 60,,Required if ActivityMetric is reported.,,WQX_ActivityMetric_v2.2.xsd,WQX_ActivityMetric_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.04,MetricSamplingPointPlaceInSeries,,The order in which a single point within a sampling frame was visited in relation to other components.,Optional,String max 60,,,,,WQX_ActivityMetric_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.05,MetricCommentText,,Free text with general comments concerning the metric.,Optional,string max 4000,,,,WQX_ActivityMetric_v2.2.xsd,WQX_ActivityMetric_v3.0.xsd,,,,
+,ACTIVITY Metric,05.04.06,IndexIdentifier,,A unique designator used to identify a unique index record that the activity metric is associated with.,Optional,"string min 1
+string max 55",,"May have 0 to many occurances for each Activity Metric block. 
+This IndexIdentifier needs to correspond to either a IndexIdentifier reported in the BiologicalHabitatIndex block of this submission or previously submitted to the system.",,WQX_ActivityMetric_v2.2.xsd,WQX_ActivityMetric_v3.0.xsd,,,,
+,Activity Binary Object,05.05.00 Header,ActivityAttachedBinaryObject,,"Header;
+This section allows for the association of References and electronic attachments to the Activity description including any other documents, images, maps, photos, laboratory materials, geospatial coverages, and other objects associated with the Project..","Optional; 
+may have 0 can have many per instance of Activity.",,,Multiple instances of SampleAttachedBinaryObject per Sample instance,,,,,,,
+,Activity Binary Object,05.05.01,BinaryObjectFileName,,"The text describing the descriptive name used to represent the file, including file extension.","Conditional 
+(see business rule)","string min 1
+string max 255",,Required if ActivityAttachedBinaryObject present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileName,"The text describing the descriptive name used to represent the file, including file extension.",Compliant
+,Activity Binary Object,05.05.02,BinaryObjectFileTypeCode,,The text or acronym describing the binary content type of a file.,"Conditional 
+(see business rule)","string min 1
+string max 6",,Required if ActivityAttachedBinaryObject present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,    BinaryObjectFileType,The text or acronym describing the binary content type of a file.,Compliant
+,Result Description,06.00.00 Header,Result,,"Header;
+This section describes the results of a field measurement, observation, or laboratory analysis.","Optional; 
+Each instance of Activity may have 0 to many results allowed",,,,,,,,,,
+,Result Description,06.00.01,DataLoggerLineName,,"The unique line identifier from a data logger result text file, normally a date/time format but could be any user defined name, e.g. ""surface"", ""midwinter"", and or ""bottom"".)","Conditional 
+(see business rule)",string max 60,,"Required when  Activity Type contains phrase  ""Data Logger"". ",,WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,Result Description,06.00.02,ResultDetectionConditionText,,The textual descriptor of a result.,"Conditional:
+(see business rule)
+","From domain values
+string max 35",,"Required if ResultMeasure block is blank.   Detection condition explains the condition of the result measure value.
+","Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,Result Description,06.00.03,CharacteristicName,,"The object, property, or substance which is evaluated or enumerated by either a direct field measurement, a direct field observation, or by laboratory analysis of material collected in the field.","Conditional:
+(see business rule)
+","From domain values
+string max 255",,Required if result is reported. ,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,Substance Identifier,A designator used to uniquely identify a substance.,Business Decision: The team gave this much consideration and felt that CharacteristicName was a more appropriate term since non-substance related field assessment characteristics could be included.
+,Result Description,06.00.04,CharacteristicNameUserSupplied,,"The user supplied object, property, or substance which is evaluated or enumerated by either a direct field measurement, a direct field observation, or by laboratory analysis of material collected in the field.",Optional,String max 255,,,,,,,,,
+,Result Description,06.00.05,MethodSpeciationName,,Identifies the chemical speciation in which the measured result is expressed.,Optional,"From domain values
+string max 20",,,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.06,ResultSampleFractionText,,The text name of the portion of the sample associated with results obtained from a physically-partitioned sample.,"Conditional 
+(see business rule)","From domain values
+string max 25",,Required for certain characteristics.,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,Result Basis Name,"The basis upon which the results were Calculated, within the Result Basis Category.","Business Decision: Instead of breaking these out individually, ESAR uses the generic Result Basis Category and Result Basis Name, which could be repeated. The team felt that separating out to specific Weight, Time, Temperature, etc elements would be more easily understood by the reporting community."
+,Result Description,06.00.07 Header,ResultMeasure,,"Header;
+The reportable measure of the result for chemical, microbiological, or other characteristics being analyzed.","Conditional (see business rules);
+Up to one allowed per instance of ResultDescription",,,Required if Detection Condition is blank.,,,,,,,
+,Result Description,06.00.07.01,ResultMeasureValue,,"The reportable measure of the result for the chemical, microbiological or other characteristic being analyzed.","Conditional 
+(see business rule)",String max 60,,"Required if Detection Condition is blank.
+
+ResultValueMeasure must match a domain list value if the CharacteristicName ends with the phrase 'Choice List'",Conditional (see note),WQX_Measure_v2.2.xsd,WQX_Measure_v3.0.xsd,ESAR / Measure,Result Value Measure / Measure Value,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Compliant
+,Result Description,06.00.07.02,MeasureUnitCode,,"The code that represents the unit for measuring the chemical substance, microbiological substance or other characteristic.","Conditional 
+(see business rule)","From domain values
+string max 12
+(Measure Unit Code)",,Required if a non-text or numeric result is reported; but can also be reported for text or non-numeric results,"Yes
+",WQX_Measure_v2.2.xsd,WQX_Measure_v3.0.xsd,ESAR / Measure,Result Value Measure / Measure Unit Code,The code that represents the unit for measuring the item.,Compliant
+,Result Description,06.00.07.03,MeasureQualifierCode,,A code used to identify any qualifying issues that affect the results.,"Optional; 
+may have 0 to 6.","From domain values
+string max 35",,,Yes,WQX_Measure_v2.2.xsd,WQX_Measure_v3.0.xsd,ESAR / Measure,Result Value Measure / Measure Qualifier Code,A code used to identify any qualifying issues that affect the results.,Compliant
+,Result Description,06.00.08,TargetCount,,A code used to identify the intended count that the sorter was aiming for.,Conditionally required for benthic assemblages (see business rule),"From domain values
+string max 35",yes,"Required when assemblage is ""Benthic Macroinvertebrates"".  ","Yes
+",,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.09,ProportionSampleProcessedNumeric,,This field captures the proportion of the sample processed. Proportion is stored as a number between 0 and 1. Large/rare count would be documented as 1 (100%).,Conditionally required for benthic assemblages (see business rule).,decimal,,"Required when assemblage is ""Benthic Macroinvertebrates"". Must be a positive number between 0 and 1. If value is equal to 0.000000001 then the value will be set to NULL.",,,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.10,ResultStatusIdentifier,,Indicates acceptability of the result with respect to QA/QC criteria.,"Conditional 
+(see business rule)","From domain values
+string max 12",,Required if result is reported. ,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,Result Status Identifier,Indicates the acceptability of the result with respect to QA/QC criteria. ,Compliant
+,Result Description,06.00.11,StatisticalBaseCode,,The code for the method used to calculate derived results.,Optional,"From domain values
+string max 25",,,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,StatisticalBaseCode,Identifier or code for the method used to calculate derived results.,Compliant
+,Result Description,06.00.12,StatisticalNValueNumeric,,The number of repeated measurements taken to calculate the result value as an average.,Optional,nonNegativeInteger,,,,,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.13,ResultValueTypeName,,"A name that qualifies the process which was used in the determination of the result value (e.g., actual, estimated, calculated).","Conditional 
+(see business rule)","From domain values
+string max 20",,"Required if result is non text, Default is actual.","Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,Result Description,06.00.14,ResultWeightBasisText,,"The name that represents the form of the sample or portion of the sample which is associated with the result value (e.g., wet weight, dry weight, ash-free dry weight). ",Optional,"From domain values
+string max 60",,,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,"Result Basis Category
+and
+Result Basis Name",ESAR uses these two fields to capture multiple basis types.,"Business Decision: Instead of breaking these out individually, ESAR uses the generic Result Basis Category and Result Basis Name, which could be repeated. The team felt that separating out to specific Weight, Time, Temperature, etc elements would be more easily understood by the reporting community."
+,Result Description,06.00.15,ResultTimeBasisText,,"The period of time (in days) over which a measurement was made. For example, BOD can be measured as 5 day or 20 day BOD.",Optional,"From domain values
+string max 12",,,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,"Result Basis Category
+and
+Result Basis Name",ESAR uses these two fields to capture multiple basis types.,"Business Decision: Instead of breaking these out individually, ESAR uses the generic Result Basis Category and Result Basis Name, which could be repeated. The team felt that separating out to specific Weight, Time, Temperature, etc elements would be more easily understood by the reporting community."
+,Result Description,06.00.16,ResultTemperatureBasisText,,"The name that represents the controlled temperature at which the sample was maintained during analysis, e.g. 25 deg BOD analysis. ",Optional,"From domain values
+string max 12",,,"Yes
+",WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,"Result Basis Category
+and
+Result Basis Name",ESAR uses these two fields to capture multiple basis types.,"Business Decision: Instead of breaking these out individually, ESAR uses the generic Result Basis Category and Result Basis Name, which could be repeated. The team felt that separating out to specific Weight, Time, Temperature, etc elements would be more easily understood by the reporting community."
+,Result Description,06.00.17,ResultParticleSizeBasisText,,User defined free text describing the particle size class for which the associated result is defined.  ,Optional,string max 40,,"This is usually done for a physical sediment analysis, where the user is free to document the particle size classification structure used in the analysis. ",,WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,ESAR,"Result Basis Category
+and
+Result Basis Name",ESAR uses these two fields to capture multiple basis types.,"Business Decision: Instead of breaking these out individually, ESAR uses the generic Result Basis Category and Result Basis Name, which could be repeated. The team felt that separating out to specific Weight, Time, Temperature, etc elements would be more easily understood by the reporting community."
+,Result Description,06.00.18 Header,DataQuality,,"Header;
+The quantitative statistics and qualitative descriptors that are used to interpret the degree of acceptability or utility of data to the user.","Optional 
+May have 0 to 1 for each instance of ResultDescription",,,,,,,,,,
+,Result Description,06.00.18.01,PrecisionValue,,"A measure of mutual agreement among individual measurements of
+the same property usually under prescribed similar conditions.",Optional,string max 60,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR / Measure,PrecisionValue,"A measure of mutual agreement among individual measurements of
+the same property usually under prescribed similar conditions.",Compliant
+,Result Description,06.00.18.02,BiasValue,,The systematic or persistent distortion of a measurement process which causes error in one direction.,Optional,String max 60,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR,BiasValue,The systematic or persistent distortion of a measurement process which causes error in one direction.,Compliant
+,Result Description,06.00.18.03,ConfidenceIntervalValue,,A range of values constructed so that this range has a specified probability of including the true population mean.,Optional,String max 60,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR,ConfidenceIntervalValue,A range of values constructed so that this range has a specified probability of including the true population mean.,Compliant
+,Result Description,06.00.18.04,UpperConfidenceLimitValue,,Value of the upper end of the confidence interval.,Optional,String max 60,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR,UpperConfidenceLimitValue,Value of the upper end of the confidence interval.,Compliant
+,Result Description,06.00.18.05,LowerConfidenceLimitValue,,Value of the lower end of the confidence interval.,Optional,String max 60,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR,LowerConfidenceLimitValue,Value of the lower end of the confidence interval.,Compliant
+,Result Description,06.00.19,ResultCommentText,,Free text with general comments concerning the result.,Optional,string max 4000,,,,WQX_DataQualityIndicator_v2.2.xsd,WQX_DataQualityIndicator_v3.0.xsd,ESAR,Substance Analysis Comments,Comments related to the analysis of a particular substance.,Business Decision: Team needed term not explicitely linked to 'Substance')
+,Result Description,06.00.20 Header ,ResultDepthHeightMeasure,,"Header;
+A measurement of the vertical location (measured from a reference point) at which a result is obtained.","Optional;
+Up to one allowed per instance of Result",,,,,,,,,,
+,Result Description,06.00.20.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Optional,string max 60,,Required if ResultDepthHeightMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards at the result level.
+,Result Description,06.00.20.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Optional,"From domain values
+string max 12",,Required if ResultDepthHeightMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards at the result level.
+,Result Description,06.00.21,ResultDepthAltitudeReferencePointText,,The reference used to indicate the datum or reference used to establish the depth/altitude of a result.,Optional,string max 125,,,,WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards at the result level.
+,Result Description,06.00.22,ResultSamplingPointName,,Single point name within a sampling frame or protocol that is associated with the reported result.,Optional,String max 120,,Data element typically used during transect-related sampling.,,WQX_ResultDescription_v2.2.xsd,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.23,ResultSamplingPointType,,Location of a Single point within a sampling frame or position that is associated with the reported result.,Optional,"From domain values
+string max 60",yes,,,,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.24,ResultSamplingPointPlaceInSeries,,The order in which a single point within a sampling frame was visited in relation to other components. ,Optional,String max 60,,,,,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.25,ResultSamplingPointCommentText,,Text description of a single point within a sampling frame for the result.,Optional,String max 4000,,,,,WQX_ResultDescription_v3.0.xsd,,,,
+,Result Description,06.00.26,RecordIdentifierUserSupplied,,The user supplied record  identifier that is  unquely associated with data entered.,Optional,String max 60,,,,,WQX_ResultDescription_v3.0.xsd,ESAR,UpperConfidenceLimitValue,Value of the upper end of the confidence interval.,Compliant
+,"BIOLOGICAL Result
+Description",06.01.00 Header,BiologicalResultDescription,,"Header;
+This section allows for the reporting of biological result information.","Optional
+May have 0 to 1 for each instance of Result",,,,,,,,,,
+,"BIOLOGICAL Result
+Description",06.01.01,BiologicalIntentName,,The primary reason the biological monitoring has occurred.,Conditional,"From domain values
+string max 35",,"- Required if Biological Result Description block is reported.
+- If ""Group Summary"", then GroupSummaryCount and/or Weight must be reported.
+- If ""Frequency Class"", result CharacteristicName must be ""Count""
+- If ""Population Census"", result CharacteristicName must be ""Count"" or ""Total Sample Weight""
+- If Tissue, SampleTissueAnatomyName must be reported and ActivityMediaName must = ""Tissue""",Yes,WQX_BiologicalResultDescription_v2.2.xsd,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.02,BiologicalIndividualIdentifier,,A number uniquely identifying the individual in accordance with the total number of individuals reported by the user.,Optional,string max 60,,,,WQX_BiologicalResultDescription_v2.2.xsd,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.03,SubjectTaxonomicName,,The name of the organism sampled as part of a biological sample.,Conditional,"From domain values
+string max 255",,Required if Biological Result Description block is reported.,,WQX_BiologicalResultDescription_v2.2.xsd,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.04,SubjectTaxonomicNameUserSupplied,,The user supplied name of the organism sampled as part of a biological sample.,Optional,string max 255,,Required if Biological Result Description block is reported.,,,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.05,SubjectTaxonomicNameUserSuppliedReferenceText,,Identifies the source or data system that created or defined the identifier.,Optional,string max 255,,Required if Biological Result Description block is reported.,,,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.06,UnidentifiedSpeciesIdentifier,,A number or name assigned as a part of a taxonomic identification. Used with a valid genus name to indicate a unique species has been observed but not taxonomically identified.,Optional,string max 255,,,,WQX_BiologicalResultDescription_v2.2.xsd,WQX_BiologicalResultDescription_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.07,SampleTissueAnatomyName,,The name of the anatomy from which a tissue sample was taken.,Conditional,"From domain values
+string max 50",,"Required if BiologicalIntentName = ""Tissue""","Yes
+",WQX_BiologicalResultDescription_v2.2.xsd,WQX_BiologicalResultDescription_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,"BIOLOGICAL Result
+Description",06.01.08,GroupSummaryCount,,Captures the total count for a Group Summary,Conditional (see business rules),string max 60,,Required if intent == GroupSummary and GroupSummaryWeight block is not present.,,,,,,,
+,"BIOLOGICAL Result
+Description",06.01.09  Header,GroupSummaryWeightMeasure,,"Header:
+Captures the total sample weight for a Group Summary",Conditional (see business rules),,,"Required when BiologicalIntentName = ""Group Summary"" and GroupSummaryCount is not present.",,,,,,,
+,"BIOLOGICAL Result
+Description",06.01.09.01,MeasureValue,,"The recorded dimension, capacity, quality, or amount of something ascertained by measuring or observing.",Conditional (see business rules),string max 60,,Required if GroupSummaryWeightMeasure block is reported.,,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,"BIOLOGICAL Result
+Description",06.01.09.02,MeasureUnitCode,,The code that represents the unit for measuring the item.,Conditional (see business rules),"From domain values
+string max 12",,Required if GroupSummaryWeightMeasure block is reported.,Yes,WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10 Header,TaxonomicDetails,,"Header;
+This section allows for the further definition of user-defined details for taxa.","Optional; 
+may have 0 can have 1 per instance of Result ",,,,,,,,,,
+,Result Taxonomic Details,06.01.10.01,CellFormName,,The name of the cell form for phytoplankton organisms expressed as a result. A single phytoplankton species may have a result value for any or all of these cell forms.,Optional,"From domain values
+string max 11",,,Yes,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.02,CellShapeName,,The cell shape of the phytoplankton organism.,Optional,"From domain values
+string max 18",,,Yes,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.03,HabitName,,The position that the characteristic occupies in a food chain,"Optional
+May have 0 to 3 instances for each TaxonomicDetails","From domain values
+string max 15",,,Yes,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.04,VoltinismName,,The number of broods or generations of the characteristic in a year,Optional,"From domain values
+string max 25",,,Yes,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.05,TaxonomicPollutionTolerance,,"For entries representing taxa, a code representing the ability of the reported taxon to tolerate pollution. ",Optional,string max 30,,,,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.06,TaxonomicPollutionToleranceScaleText,,Provides a description of the scale used for the taxonomic pollution tolerance value.,Optional,string max 50,,,,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.07,TrophicLevelName,,"For entries representing taxa, a code representing the trophic level with which the reported taxon is typically assigned. ",Optional,string max 30,,,,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.08,FunctionalFeedingGroupName,,"For entries representing taxa, a code representing the functional feeding group with which the reported taxon is typically associated. ","Optional
+May have 0 to 3 instances for each TaxonomicDetails",string max 30,,,,WQX_TaxonomicDetails_v2.2.xsd,WQX_TaxonomicDetails_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09 Header,TaxonomicDetailsCitation,,"Header;
+Identifies the source that created or defined the Taxonomic Details.","Optional
+May have 0 to 1 for each instance TaxonomicDetails",,,,,,,,,,
+,Result Taxonomic Details,06.01.10.09.01,ResourceTitleName,,A name given to the resource,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if TaxonomicDetailsCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09.02,ResourceCreatorName,,An entity primarily responible for making the content of the resource.,Optional,string max 120,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09.03,ResourceSubjectText,,A topic of the content of the resource.,Optional,string max 4000,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09.04,ResourcePublisherName,,An entity responsible for making the resource available.,Optional,string max 60,,,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09.05,ResourceDate,,A date of an event in the lifecycle of the resource.,"Conditional 
+(see business rule)","date
+(YYYY-MM-DD)",,Required if TaxonomicDetailsCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Taxonomic Details,06.01.10.09.06,ResourceIdentifier,,An unambiguous reference to the resource within a given context.,"Conditional 
+(see business rule)","string min 1
+string max 255",,Required if TaxonomicDetailsCitation is reported.,,WQX_BibliographicReference_v2.2.xsd,WQX_BibliographicReference_v3.0.xsd,,,,
+,Result Frequency Class Information,06.01.10.10 Header,FrequencyClassInformation,,"Header;
+This section allows for the definition of a subgroup of biological communities by life stage, physical attribute, or abnormality to support frequency class studies.","Optional 
+May have 0 to 3 for each instance of Biological Result Description",,,,,,,,,,
+,Result Frequency Class Information,06.01.10.10.01,FrequencyClassDescriptorCode,,"A code that describes the frequency class, either as a life stage, abnormality, gender, or measurable characteristic (i.e. length, weight) used to categorize a biological population count. ","Conditional 
+(see business rule)","domain list
+string max 50",,Required if FrequencyClassInformation is reported,Yes,WQX_FreqneucyClassInformation_v2.2.xsd,WQX_FreqneucyClassInformation_v3.0.xsd,,,,
+,Result Frequency Class Information,06.01.10.10.02,FrequencyClassDescriptorUnitCode,,The code that represents the unit for measuring the item.,"Conditional 
+(see business rule)","From domain values
+string max 12",,Required if FrequencyClassDescriptorCode type = 'Measured Characteristic',Yes,WQX_FreqneucyClassInformation_v2.2.xsd,WQX_FreqneucyClassInformation_v3.0.xsd,,,,
+,Result Frequency Class Information,06.01.10.10.03,LowerClassBoundValue,,This described the lower bound for a frequency class descriptor.,"Conditional 
+(see business rule)",string max 60,,Required if FrequencyClassDescriptorCode type = 'Measured Characteristic',,WQX_FreqneucyClassInformation_v2.2.xsd,WQX_FreqneucyClassInformation_v3.0.xsd,,,,
+,Result Frequency Class Information,06.01.10.10.04,UpperClassBoundValue,,This described the upper bound for a frequency class descriptor.,"Conditional 
+(see business rule)",string max 60,,Required if FrequencyClassDescriptorCode type = 'Measured Characteristic',,WQX_FreqneucyClassInformation_v2.2.xsd,WQX_FreqneucyClassInformation_v3.0.xsd,,,,
+,Result Binary Object,06.02.00 Header,AttachedBinaryObject,,"Header;
+This section allows for the association of References and electronic attachments to a Result description including any other documents, images, maps, photos, laboratory materials, geospatial coverages, and other objects associated with the Project..","Optional; 
+may have 0 can have many per instance of Result ",,,Multiple instances of AttachedBinaryObject per Result instance,,,,,,,
+,Result Binary Object,06.02.01,BinaryObjectFileName,,"The text describing the descriptive name used to represent the file, including file extension.","Conditional 
+(see business rule)","string min 1
+string max 255",,Required if AttachedBinaryObject (at result level) present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,BinaryObjectFileName,"The text describing the descriptive name used to represent the file, including file extension.",Compliant
+,Result Binary Object,06.02.02,BinaryObjectFileTypeCode,,The text or acronym describing the binary content type of a file.,"Conditional 
+(see business rule)","string min 1
+string max 6",,Required if AttachedBinaryObject (at result level) present,,WQX_AttachedBinaryObject_v2.2.xsd,WQX_AttachedBinaryObject_v3.0.xsd,ESAR - Binary,BinaryObjectFileType,The text or acronym describing the binary content type of a file.,Compliant
+,Result Analytical Method ,06.03.00 Header,ResultAnalyticalMethod,,"Header:
+Allows for the optional association of an analytical method employed either in the Lab or in the Field with any result.","Conditional (see business rule);
+may have 0 can have 1 per Result",,,"- Required for certain ActivityTypeCodes. 
+(Refer to Activity Type domain list for identification of Activity Types that require reporting of Analytical Method.)
+- Not required if BiologicalIntentName is ""Individual"", ""Population Census"", ""Frequency Class"", or ""Group Summary""",,,,,,,
+,Result Analytical Method ,06.03.01,MethodIdentifier,,The identification number or code assigned by the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 35",,"Required if Result Analytical Method block is reported.
+
+Domain Values: This field will be validated against a domain value list only if the MethodIdentifierContext element (06.03.02) is set to one of a predefined list of contexts (e.g. USEPA, ASTM, USDOI/USGS, etc.).","Yes, but see note in business rules.",WQX_ResultAnalyticalMethod_v2.2.xsd,WQX_ResultAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodIdentifier,The identification number or code assigned by the method publisher.,Compliant
+,Result Analytical Method ,06.03.02,MethodIdentifierContext,,Identifies the source or data system that created or defined the identifier.,"Conditional 
+(see business rule)","string min 1
+string max 120",,"Required if Result Analytical Method block is reported.
+
+Domain Values: This field can either be user-defined or populated from a predefined list of contexts (e.g. USEPA, ASTM, USDOI/USGS, etc.).","Yes, but see note in business rules.",WQX_ResultAnalyticalMethod_v2.2.xsd,WQX_ResultAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodIdentifier Context (meta data),Identifies the source or data system that created or defined the identifier.,Compliant
+,Result Analytical Method ,06.03.03,MethodName,,The title that appears on the method from the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 250",,Required only if Method Identifier and Method Identifier Context are not from WQX Domain Value list (i.e. user-defined method),,WQX_ResultAnalyticalMethod_v2.2.xsd,WQX_ResultAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodName,The title that appears on the method from the method publisher.,Compliant
+,Result Analytical Method ,06.03.04,MethodQualifierTypeName,,"Identifier of type of method that identifies it as reference, equivalent, or other.",Optional,string max 25,,,,WQX_ResultAnalyticalMethod_v2.2.xsd,WQX_ResultAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodQualifierType,"Identifier of type of method that identifies it as reference, equivalent, or other.",Compliant
+,Result Analytical Method ,06.03.05,MethodDescriptionText,,A brief summary that provides general information about the method.,Optional,string max 4000,,,,WQX_ResultAnalyticalMethod_v2.2.xsd,WQX_ResultAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodDescriptionText,A brief summary that provides general information about the method.,Compliant
+,Result Analytical Comparable Method ,06.04.00 Header,ComparableAnalyticalMethod,,"Header:
+Allows for the optional association of an analytical method employed either in the Lab or in the Field with any result.","Optional (see business rule);
+may have 0 can have 1 per Result",,,Dependent on ResultAnalyticalMethod.  ResultAnalyticalMethod must be populated.,,,,,,,
+,Result Analytical Comparable Method ,06.04.01,MethodIdentifier,,The identification number or code assigned by the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 35",,"Required if Result Analytical Comparable Method block is reported.
+
+Domain Values: This field will be validated against a domain value list only if the MethodIdentifierContext element (06.03.02) is set to one of a predefined list of contexts (e.g. USEPA, ASTM, USDOI/USGS, etc.).",,,WQX_ComparableAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodIdentifier,The identification number or code assigned by the method publisher.,Compliant
+,Result Analytical Comparable Method ,06.04.02,MethodIdentifierContext,,Identifies the source or data system that created or defined the identifier.,"Conditional 
+(see business rule)","string min 1
+string max 120",,"Required if Result Analytical Comparable Method block is reported.
+
+Domain Values: This field can either be user-defined or populated from a predefined list of contexts (e.g. USEPA, ASTM, USDOI/USGS, etc.).",,,WQX_ComparableAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodIdentifier Context (meta data),Identifies the source or data system that created or defined the identifier.,Compliant
+,Result Analytical Comparable Method ,06.04.03,MethodModificationText,,A brief summary that provides general information about the modification of the method.,Optional,string max 4000,,,,,WQX_ComparableAnalyticalMethod_v3.0.xsd,ESAR,SampleAnalyticalMethod / MethodName,The title that appears on the method from the method publisher.,Compliant
+,Result LAB Info,06.05.00 Header,ResultLabInformation,,"Header;
+Information that describes information obtained by a laboratory related to a specific laboratory analysis.","Optional;
+may have 0 can have 1 per Result",,,,,,,,,,
+,Result LAB Info,06.05.01,LaboratoryName,,The name of the Lab responsible for the result,Optional,string max 60,,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,ESAR /Contact,LaboratoryOrganizationContact / OrganizationFormalName,The principal organization to contact with questions about this laboratory analysis data.,"Business Decision: WQX team decided not to reference ESAR Laboratory Contact (15 fields), since team needed only 1 field, or having an element name called OrganizationFormalName, which isn't as clear as term used."
+,Result LAB Info,06.05.02,AnalysisStartDate,,The calendar date on which the analysis began.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,ESAR,Analysis Start Date,The calendar date on which the analysis began.,Compliant
+,Result LAB Info,06.05.03 Header,AnalysisStartTime,,"Header;
+The local time and relative time zone when the analysis began.",Optional,,,,,,,,,,
+,Result LAB Info,06.05.03.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when AnalysisStartTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,Analysis Start Time,The local time when the analysis began.,Compliant
+,Result LAB Info,06.05.03.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when AnalysisStartTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,
+,Result LAB Info,06.05.04,AnalysisEndDate,,The calendar date on which the analysis was finished.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,ESAR,Analysis End Date,The calendar date on which the analysis was finished.,Compliant
+,Result LAB Info,06.05.05 Header,AnalysisEndTime,,"Header;
+The local time and relative time zone when the analysis was finished.",Optional,,,,,,,,,,
+,Result LAB Info,06.05.05.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when AnalysisEndTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,Analysis End TIme,The local time when the analysis was finished.,Compliant
+,Result LAB Info,06.05.05.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when AnalysisEndTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,
+,Result LAB Info,06.05.06,LaboratoryCommentText,,Remarks which further describe the laboratory procedures which produced the result.,Optional,string max 4000,,,,,WQX_ResultLabInformation_v3.0.xsd,,,,
+,Result Detection Quantitation Limit,06.05.07 Header,ResultDetectionQuantitationLimit,,"Header;
+Information that describes one of a variety of detection or quantitation limits determined in a laboratory.","Optional;
+may have 0 can have many per Result Lab Information",,,Multiple instances of ResultDetectionQuantitationLimit per ResultLabInformation,,,,,,,
+,Result Detection Quantitation Limit,06.05.07.01,DetectionQuantitationLimitTypeName,,Text describing the type of detection or quantitation limit used in the analysis of a characteristic.,Mandatory,"From domain values
+string max 35",,"Required when ResultDetectionConditionText is either
+*Not Detected""
+""Present Above Quantification Limit""
+or ""Present and Below Quantification Limit""
+
+Required if ResultDetectionQuantitationLimit block is reported","Yes
+",WQX_DetectionQuantitationLimit_v2.2.xsd,WQX_DetectionQuantitationLimit_v3.0.xsd,ESAR,"Detection Limit Type 
+or
+Reporting Limit Type","One of a list of client, regulation, or organization defined acronyms or statistic methodologies that specify the type of detection limit used for analysis. 
+Or
+One of a list of client, regulation, or organization defined acronyms or statistical methodologies that specify the type of reporting limit.",Business Decision: ESAR uses Detection Limit and Reporting Limit as separate fields. The team decided to combine these into 1 field that could be reported multiple times for each result to simplify the reporting process. A type field is then used to distinguish the type of detection or reporting condition reported.
+,Result Detection Quantitation Limit,06.05.07.02 Header,DetectionQuantitationLimitMeasure,,"Header;
+Constituent concentration that, when processed through the complete method, produces a signal that is statistically different from a blank.",Mandatory,,,"Required when ResultDetectionConditionText is either
+*Not Detected""
+""Present Above Quantification Limit""
+or ""Present and Below Quantification Limit""
+
+Required if ResultDetectionQuantitationLimit block is reported",,,,,,,
+,Result Detection Quantitation Limit,06.05.07.02.01,MeasureValue,,"The reportable measure of the result for the chemical, microbiological or other characteristic being analyzed.","Conditional 
+(see business rule)",string max 60,,"Required when ResultDetectionConditionText is either
+*Not Detected""
+""Present Above Quantification Limit""
+or ""Present and Below Quantification Limit"";
+Also required when DetectionQuantitationLimitMeasure block is reported.","Yes
+",WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,"Detection Limit / Measure Value 
+or
+Reporting Limit / Measure Value","Constituent concentration that produces a signal sufficiently greater than the blank and can be detected within specified levels by good laboratories during routine operating conditions.
+OR
+Constituent concentration that, when processed through the complete method, produces a signal that is statistically different from a blank.",Business Decision: ESAR uses Detection Limit and Reporting Limit as separate fields. The team decided to combine these into 1 field that could be reported multiple times for each result to simplify the reporting process. A type field is then used to distinguish the type of detection or reporting condition reported.
+,Result Detection Quantitation Limit,06.05.07.02.02,MeasureUnitCode,,"The code that represents the unit for measuring the chemical substance, microbiological substance or other characteristic.","Conditional 
+(see business rule)","From domain values
+string max 12",,"Required when ResultDetectionConditionText is either
+*Not Detected""
+""Present Above Quantification Limit""
+or ""Present and Below Quantification Limit"";
+Also required when DetectionQuantitationLimitMeasure block is reported.","Yes
+",WQX_MeasureCompact_v2.2.xsd,WQX_MeasureCompact_v3.0.xsd,ESAR,"Detection Limit / Measure Unit Code 
+or
+Reporting Limit / Measure Unit Code",The code that represents the unit for measuring the item.,Business Decision: ESAR uses Detection Limit and Reporting Limit as separate fields. The team decided to combine these into 1 field that could be reported multiple times for each result to simplify the reporting process. A type field is then used to distinguish the type of detection or reporting condition reported.
+,Result Detection Quantitation Limit,06.05.07.03,DetectionQuantitationLimitCommentText,,Text providing further description and comment on the detection and/or quantitation limits.,Optional,string max 4000,,,,,WQX_DetectionQuantitationLimit_v3.0.xsd,,,,
+,Result LAB Info,06.05.08,LaboratorySampleSplitRatio,,The proportion of all of the material collected that was sent to lab for analysis.,Optional,string max 60,,,,,WQX_ResultLabInformation_v3.0.xsd,,,,
+,Result LAB Info,06.05.09,LaboratoryAccreditationIndicator,,Indicates whether the laboratory is accredited. ,Optional,boolean,,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,,,,
+,Result LAB Info,06.05.10,LaboratoryAccreditationAuthorityName,,An outside accreditation authority identifier.,Optional,string max 20,,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,ESAR,Laboratory Accreditation Authority Name,An outside accreditation authority identifier.,Compliant
+,Result LAB Info,06.05.11,TaxonomistAccreditationIndicator,,Indicates whether the taxonomist is accredited. ,Optional,boolean,,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,,,,
+,Result LAB Info,06.05.12,TaxonomistAccreditationAuthorityName,,An outside accreditation authority identifier for the taxonomist.,Optional,string max 20,,,,WQX_ResultLabInformation_v2.2.xsd,WQX_ResultLabInformation_v3.0.xsd,,,,
+,LAB Sample Prep,06.06.00 Header,LabSamplePreparation,,"Header;
+Describes Lab Sample Preparation procedures which may alter the original state of the Sample and produce Lab subsamples.  These Lab Subsamples are analyzed and reported by the Lab as Sample results.","Optional;
+may have 0 can have many per Result",,,,,,,,,,
+,LAB Sample Prep,06.06.01 Header,LabSamplePreparationMethod,,"Header;
+Identifying information about the method followed to prepare a sample for analysis",Optional ,,,,,,,,,,
+,LAB Sample Prep,06.06.01.01,MethodIdentifier,,The identification number or code assigned by the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 35",,Required if LabSamplePreparationMethod block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Results / Method,Sample Preparation Method / Method Identifier,The identification number or code assigned by the method publisher.,Compliant
+,LAB Sample Prep,06.06.01.02,MethodIdentifierContext,,Identifies the source or data system that created or defined the identifier.,"Conditional 
+(see business rule)","string min 1
+string max 120",,Required if LabSamplePreparationMethod block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Results / Method,Sample Preparation Method / Method Identifier (metadata),Identifies the source or data system that created or defined the identifier.,Compliant
+,LAB Sample Prep,06.06.01.03,MethodName,,The title that appears on the method from the method publisher.,"Conditional 
+(see business rule)","string min 1
+string max 250",,Required if LabSamplePreparationMethod block is reported.,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Results / Method,Sample Preparation Method / Method Name,Identifying information about the method(s) followed to prepare a sample for analysis.,Compliant
+,LAB Sample Prep,06.06.01.04,MethodQualifierTypeName,,"Identifier of type of method that identifies it as reference, equivalent, or other.",Optional,string max 25,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Results / Method,Sample Preparation Method / MethodQualifierType,"Identifier of type of method that identifies it as reference, equivalent, or other.",Compliant
+,LAB Sample Prep,06.06.01.05,MethodDescriptionText,,A brief summary that provides general information about the method.,Optional,string max 4000,,,,WQX_ReferenceMethod_v2.2.xsd,WQX_ReferenceMethod_v3.0.xsd,ESAR - Results / Method,Sample Preparation Method / MethodDescriptionText,A brief summary that provides general information about the method.,Compliant
+,LAB Sample Prep,06.06.02,PreparationStartDate,,The calendar date when on which the preparation/extraction of the sample for analysis began.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_LabSamplePreparation_v2.2.xsd,WQX_LabSamplePreparation_v3.0.xsd,ESAR,PreparationStartDate,The calendar date when on which the preparation/extraction of the sample for analysis began.,Compliant
+,LAB Sample Prep,06.06.03 Header,PreparationStartTime,,"Header;
+The local time when the preparation/extraction of the sample for analysis began.",Optional,,,,,,,,,,
+,LAB Sample Prep,06.06.03.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when PreparationStartTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,PreparationStartTime,The local time when the preparation/extraction of the sample for analysis began.,Compliant
+,LAB Sample Prep,06.06.03.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when PreparationStartTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,LAB Sample Prep,06.06.04,PreparationEndDate,,The calendar date when on which the preparation/extraction of the sample for analysis was finished.,Optional,"date
+(YYYY-MM-DD)",,,,WQX_LabSamplePreparation_v2.2.xsd,WQX_LabSamplePreparation_v3.0.xsd,ESAR,PreparationEndDate,The calendar date when on which the preparation/extraction of the sample for analysis was finished.,Compliant
+,LAB Sample Prep,06.06.05 Header,PreparationEndTime,,"Header;
+The local time when the preparation/extraction of the sample for analysis was finished.",Optional,,,,,,,,,,
+,LAB Sample Prep,06.06.05.01,Time,,The time of day that is reported.,Conditional (see business rules),"Time - 
+(hh:mm:ss)",,Required only when PreparationEndTime is reported,,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,ESAR,PreparationEndTime,The local time when the preparation/extraction of the sample for analysis was finished.,Compliant
+,LAB Sample Prep,06.06.05.02,TimeZoneCode,,The time zone for which the time of day is reported. Any of the longitudinal divisions of the earth's surface in which a standard time is kept.,Conditional (see business rules),"From domain values
+string min 1
+string max 4",,Required only when PreparationEndTime is reported,Yes,WQX_WQXTime_v2.2.xsd,WQX_WQXTime_v3.0.xsd,,,,Business Decision: No corresponding element found in EDSC standards.
+,LAB Sample Prep,06.06.06,SubstanceDilutionFactor,,The overall dilution of the substance subjected to this analysis.,Optional,string max 60,,"Note: A value of ""1"" corresponds to nominal conditions for the method. Values greater than one correspond to dilutions. Values less than one correspond to
+concentrations.",,WQX_LabSamplePreparation_v2.2.xsd,WQX_LabSamplePreparation_v3.0.xsd,,,,
+,ACTIVITY Group,07.00 Header,ActivityGroup,"ReplaceActivities
+
+Boolean: true (default), false
+
+""true"" is the default value, which indicates that all existing ActivityIdentifiers in this ActvityGroup should be deleted before adding the new ActivityIdentifiers provided in this submission file
+
+""false"" indicates to add an Actiivity ID to an existing Activity Group","Header;
+Allows for the grouping of activities","Optional 
+May have 0 to many for each instance of Activity",,,,,,,,,,
+,ACTIVITY Group,7.01,ActivityGroupIdentifier,,Designator that uniquely identifies a grouping of activities within an organization.,Mandatory,"string min 1
+string max 55",,,,WQX_ActivityGroup_v2.2.xsd,WQX_ActivityGroup_v3.0.xsd,,,,No corresponding element found in EDSC data standards.
+,ACTIVITY Group,7.02,ActivityGroupName,,A name of an activity group.,Optional,string max 120,,,,WQX_ActivityGroup_v2.2.xsd,WQX_ActivityGroup_v3.0.xsd,,,,No corresponding element found in EDSC data standards.
+,ACTIVITY Group,7.03,ActivityGroupTypeCode,,Identifies the type of grouping of a set of activities,Mandatory,"From domain values
+string min 1
+string max 50",,,Yes,WQX_ActivityGroup_v2.2.xsd,WQX_ActivityGroup_v3.0.xsd,,,,No corresponding element found in EDSC data standards.
+,ACTIVITY Group,7.04,ActivityIdentifier,,Designator that uniquely identifies an activity within an organization.,Mandatory,"string min 1
+string max 55",,"May have 2 to many occurances for each Activity Group block. 
+This ActivityIdentifier needs to correspond to either an ActivityIdentifier reported in the Activity block of this submission or previously submitted to the system.",,WQX_ActivityGroup_v2.2.xsd,WQX_ActivityGroup_v3.0.xsd,,,,No corresponding element found in EDSC data standards.
